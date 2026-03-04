@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # astro
 .astro/
+
+# brand source docs (large videos, PDFs, raw assets)
+docs/

@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+import ambientImg from "@/assets/images/events/vol01-ambient.jpg";
+import food1Img from "@/assets/images/events/vol01-food1.jpg";
+import candidImg from "@/assets/images/events/vol01-candid.jpg";
+import detailImg from "@/assets/images/events/vol01-detail.jpg";
+import sceneImg from "@/assets/images/events/vol01-scene.jpg";
+---
+
+<section id="volumes" class="section-padding bg-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-20 reveal">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="brand-divider"></div>
+        <p class="text-clay font-body font-medium tracking-[0.25em] uppercase text-xs">Our Volumes</p>
+        <div class="brand-divider"></div>
+      </div>
+      <h2 class="section-heading text-charcoal mb-6">Every Volume,<br />A New Chapter</h2>
+      <p class="section-subheading text-charcoal/50 max-w-2xl mx-auto">
+        Each volume is a unique dining experience at a different restaurant, with a custom tasting menu
+        crafted just for our members. Here's where the journey has taken us.
+      </p>
+    </div>
+
+    <!-- Volume 01 — Monsoon (Featured) -->
+    <div class="reveal-scale mb-16">
+      <div class="relative bg-charcoal rounded-sm overflow-hidden group">
+        <div class="grid lg:grid-cols-2">
+          <div class="relative h-[400px] lg:h-[600px] overflow-hidden">
+            <Image
+              src={ambientImg}
+              alt="Volume 01 — Loy Krathong at Monsoon"
+              width={900}
+              height={600}
+              quality={75}
+              format="webp"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+            />
+            <div class="absolute top-6 left-6 bg-saffron px-4 py-2">
+              <span class="font-body font-bold text-charcoal text-xs tracking-widest uppercase">Vol. 01</span>
+            </div>
+          </div>
+
+          <div class="p-10 md:p-14 lg:p-16 flex flex-col justify-center">
+            <span class="text-saffron/60 font-body text-sm tracking-widest uppercase mb-3">November 4th, 2025</span>
+            <h3 class="font-heading text-3xl md:text-4xl text-cream mb-2">Loy Krathong</h3>
+            <p class="text-cream/40 font-body text-sm mb-6">at Monsoon — Bahrain's Most Iconic Asian Spot</p>
+            <div class="brand-divider mb-6"></div>
+            <p class="text-cream/60 font-body font-light leading-relaxed mb-8">
+              Our inaugural volume. An 11-course tasting menu celebrating Thailand's Festival of Lights,
+              served at one of the most beloved Asian restaurants in Bahrain. 12 seats. One unforgettable night.
+            </p>
+            <div class="grid grid-cols-3 gap-6 mb-8">
+              <div>
+                <p class="text-2xl font-heading text-saffron">11</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Courses</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">12</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Seats</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">12</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">BD / Person</p>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-2 text-saffron font-body text-sm tracking-wider uppercase">
+              <span class="w-2 h-2 rounded-full bg-clay"></span>
+              Sold Out
+            </span>
+          </div>
+        </div>
+
+        <!-- Photo strip -->
+        <div class="grid grid-cols-4 gap-[2px]">
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={food1Img} alt="Dining moment" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={candidImg} alt="Member enjoying dinner" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={detailImg} alt="Event detail" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={sceneImg} alt="Dinner scene" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming teaser -->
+    <div class="reveal text-center py-16 border-t border-charcoal/10">
+      <p class="text-charcoal/40 font-body tracking-widest uppercase text-xs mb-4">Coming Soon</p>
+      <h3 class="font-heading text-3xl md:text-4xl text-charcoal mb-4">Volume 10</h3>
+      <p class="text-charcoal/50 font-body font-light max-w-md mx-auto mb-8">
+        The next chapter is being written. Join the waitlist to be the first to know.
+      </p>
+      <a href="#waitlist" class="btn-outline">Get Notified</a>
+    </div>
+
+  </div>
+</section>

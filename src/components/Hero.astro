@@ -1,116 +1,90 @@
 ---
-// Hero section — full viewport, background image with overlay
+import { Image } from "astro:assets";
+import heroImg from "@/assets/images/events/vol01-group.jpg";
 ---
 
-<section
-  id="hero"
-  class="relative min-h-screen flex items-center justify-center overflow-hidden"
->
-  <!-- Background placeholder — replace with actual image -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-plate-900 via-plate-800 to-palm-900"
-  >
-    <!-- TODO: Replace with actual hero image -->
-    <!-- <img src="/images/hero.jpg" alt="" class="w-full h-full object-cover" /> -->
-    <div class="absolute inset-0 bg-black/40"></div>
-  </div>
-
-  <!-- Decorative elements -->
-  <div
-    class="absolute top-20 left-10 w-72 h-72 bg-palm-500/10 rounded-full blur-3xl"
-  >
-  </div>
-  <div
-    class="absolute bottom-20 right-10 w-96 h-96 bg-plate-500/10 rounded-full blur-3xl"
-  >
+<section id="hero" class="relative min-h-screen flex items-end overflow-hidden">
+  <!-- Background image — optimized by Astro -->
+  <div class="absolute inset-0">
+    <Image
+      src={heroImg}
+      alt="Palm & Plate community at a dining event"
+      width={1920}
+      height={1080}
+      quality={70}
+      format="webp"
+      class="w-full h-full object-cover object-top parallax"
+      data-speed="0.15"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-charcoal/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal/40 to-transparent"></div>
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-    <p
-      class="inline-block text-palm-300 font-medium tracking-widest uppercase text-sm mb-6 animate-fade-in"
-    >
-      Bahrain's Premier Food Club
-    </p>
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pb-20 md:pb-28 pt-40">
+    <div class="max-w-3xl">
+      <div class="hero-fade inline-flex items-center gap-3 mb-8">
+        <div class="w-8 h-[1px] bg-saffron"></div>
+        <p class="text-saffron font-body font-medium tracking-[0.3em] uppercase text-xs">
+          Bahrain's First Food Club
+        </p>
+      </div>
 
-    <h1
-      class="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 animate-fade-in-up"
-    >
-      Where Every Meal
-      <br />
-      Becomes a <span class="text-palm-400">Memory</span>
-    </h1>
+      <h1 class="hero-fade hero-delay-1 text-display font-heading text-cream mb-6">
+        Where Every Meal<br />
+        Tells a <span class="text-saffron">Story</span>
+      </h1>
 
-    <p
-      class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-100"
-    >
-      Exclusive dining events, curated culinary experiences, and a passionate
-      community of food lovers — all in the heart of Bahrain.
-    </p>
+      <p class="hero-fade hero-delay-2 text-lg md:text-xl text-cream/70 font-body font-light max-w-xl mb-10 leading-relaxed">
+        Curated dining experiences that bring together Bahrain's most passionate food lovers.
+        One table, one night, one unforgettable memory.
+      </p>
 
-    <div
-      class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200"
-    >
-      <a href="#membership" class="btn-primary text-lg !px-10 !py-4">
-        Become a Member
-      </a>
-      <a href="#events" class="btn-secondary !border-white/30 !text-white hover:!bg-white/10 text-lg !px-10 !py-4">
-        View Events
-      </a>
+      <div class="hero-fade hero-delay-3 flex flex-col sm:flex-row gap-4">
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+        <a href="#about" class="btn-secondary">Discover More</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-    <svg
-      class="w-6 h-6 text-white/60"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-    </svg>
+    <div class="hidden md:flex absolute bottom-10 right-12 flex-col items-center gap-3">
+      <span class="text-cream/40 font-body text-xs tracking-widest uppercase rotate-90 origin-center translate-x-4 -translate-y-8">Scroll</span>
+      <div class="w-[1px] h-16 bg-gradient-to-b from-cream/0 via-cream/40 to-cream/0 scroll-line"></div>
+    </div>
   </div>
 </section>
 
+<!-- Marquee strip -->
+<div class="bg-clay py-3 overflow-hidden">
+  <div class="animate-marquee whitespace-nowrap flex">
+    {Array(10).fill(null).map(() => (
+      <span class="mx-8 text-cream/80 font-body text-sm tracking-widest uppercase flex items-center gap-8">
+        <span>Exclusive Events</span>
+        <span class="text-saffron text-lg">✦</span>
+        <span>Curated Menus</span>
+        <span class="text-saffron text-lg">✦</span>
+        <span>Community</span>
+        <span class="text-saffron text-lg">✦</span>
+        <span>Bahrain</span>
+        <span class="text-saffron text-lg">✦</span>
+      </span>
+    ))}
+  </div>
+</div>
+
 <style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  @keyframes hero-enter {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .hero-fade { animation: hero-enter 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-delay-1 { animation-delay: 0.2s; }
+  .hero-delay-2 { animation-delay: 0.4s; }
+  .hero-delay-3 { animation-delay: 0.6s; }
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
   }
-
-  .animate-fade-in {
-    animation: fade-in 0.8s ease-out both;
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out both;
-  }
-
-  .delay-100 {
-    animation-delay: 0.2s;
-  }
-
-  .delay-200 {
-    animation-delay: 0.4s;
-  }
+  .scroll-line { animation: scroll-pulse 2s ease-in-out infinite; }
 </style>

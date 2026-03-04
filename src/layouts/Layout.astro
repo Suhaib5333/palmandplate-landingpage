@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title,
-  description = "Palm & Plate — Bahrain's premier food club. Exclusive dining events, curated culinary experiences, and a community of food lovers.",
+  description = "Palm & Plate — Bahrain's first food club. Exclusive dining experiences, curated culinary events, and a passionate community of food lovers.",
 } = Astro.props;
 ---
 
@@ -18,32 +18,66 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#A42F2A" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://palmandplate.com" />
+    <meta property="og:url" content="https://palmnplate.com" />
     <meta property="og:locale" content="en_BH" />
+    <meta property="og:site_name" content="Palm & Plate Food Club" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/TAN - ASHFORD.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/DINNextW1G-Regular.otf" as="font" type="font/otf" crossorigin />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="grain">
     <slot />
+
+    <!-- Global scroll animation observer -->
+    <script>
+      const observerCallback: IntersectionObserverCallback = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(observerCallback, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      });
+
+      document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Simple parallax on scroll
+      let ticking = false;
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            document.querySelectorAll<HTMLElement>(".parallax").forEach((el) => {
+              const speed = parseFloat(el.dataset.speed || "0.3");
+              el.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    </script>
   </body>
 </html>

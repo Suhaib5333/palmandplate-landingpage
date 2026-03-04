@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== BRAND FONTS ===== */
+@font-face {
+  font-family: "TAN Ashford";
+  src: url("/fonts/TAN - ASHFORD.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next";
+  src: url("/fonts/DINNextW1G-Light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next";
+  src: url("/fonts/DINNextW1G-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next";
+  src: url("/fonts/DINNextW1G-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next";
+  src: url("/fonts/DINNextW1G-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amrys";
+  src: url("/fonts/Amrys-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ===== BASE STYLES ===== */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -11,38 +55,156 @@
 
   body {
     @apply bg-cream text-charcoal font-body;
+    overflow-x: hidden;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+  }
+
+  ::selection {
+    background-color: #F5B532;
+    color: #1b1b1b;
   }
 }
 
+/* ===== COMPONENT CLASSES ===== */
 @layer components {
   .section-padding {
-    @apply px-6 py-20 md:px-12 lg:px-24 lg:py-28;
+    @apply px-6 py-24 md:px-12 lg:px-24 lg:py-32;
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-heading font-bold tracking-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.1];
   }
 
   .section-subheading {
-    @apply text-lg md:text-xl text-charcoal/70 max-w-2xl;
+    @apply text-lg md:text-xl font-body font-light leading-relaxed;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-3.5 bg-palm-600 text-white font-medium rounded-full
-      hover:bg-palm-700 transition-all duration-300 hover:shadow-lg hover:shadow-palm-600/20 hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-clay text-cream font-body font-medium tracking-wider uppercase text-sm
+      hover:bg-saffron hover:text-charcoal transition-all duration-500;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-3.5 border-2 border-palm-600 text-palm-700 font-medium rounded-full
-      hover:bg-palm-600 hover:text-white transition-all duration-300 hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-8 py-4 border border-cream/40 text-cream font-body font-medium tracking-wider uppercase text-sm
+      hover:bg-cream hover:text-charcoal transition-all duration-500;
   }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 border-2 border-clay text-clay font-body font-medium tracking-wider uppercase text-sm
+      hover:bg-clay hover:text-cream transition-all duration-500;
+  }
+
+  /* Grain texture overlay */
+  .grain::after {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 120ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 240ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 360ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 480ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
+
+/* Smooth image hover zoom */
+.img-zoom {
+  @apply overflow-hidden;
+}
+.img-zoom img {
+  @apply transition-transform duration-700 ease-out;
+}
+.img-zoom:hover img {
+  @apply scale-110;
+}
+
+/* Brand divider */
+.brand-divider {
+  @apply w-16 h-0.5 bg-saffron;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Parallax */
+.parallax {
+  will-change: transform;
 }

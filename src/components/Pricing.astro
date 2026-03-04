@@ -1,0 +1,175 @@
+---
+// Pricing — 3 membership tiers (sample, to be finalized)
+const tiers = [
+  {
+    name: "Explorer",
+    price: "3",
+    period: "/ month",
+    description: "For the curious palate. Dip your toes into Bahrain's food scene.",
+    features: [
+      "Access to select public events",
+      "Monthly food recommendations",
+      "Community WhatsApp group",
+      "Member badge",
+    ],
+    cta: "Join as Explorer",
+    featured: false,
+  },
+  {
+    name: "Connoisseur",
+    price: "7",
+    period: "/ month",
+    description: "The full Palm & Plate experience. For dedicated food lovers.",
+    features: [
+      "Priority access to all volumes",
+      "Exclusive members-only events",
+      "Early booking & reserved seats",
+      "Partner restaurant perks",
+      "+1 guest pass (1 per quarter)",
+      "Connoisseur badge",
+    ],
+    cta: "Join as Connoisseur",
+    featured: true,
+  },
+  {
+    name: "Patron",
+    price: "15",
+    period: "/ month",
+    description: "For those who want to shape the future of dining in Bahrain.",
+    features: [
+      "Everything in Connoisseur",
+      "Guaranteed seat at every volume",
+      "+1 guest pass every month",
+      "Input on restaurant & menu selection",
+      "Exclusive Patron-only dinners",
+      "Patron badge & recognition",
+    ],
+    cta: "Join as Patron",
+    featured: false,
+  },
+];
+---
+
+<section id="pricing" class="section-padding bg-cream-light relative overflow-hidden">
+  <!-- Subtle decorative -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-saffron/20 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-20 reveal">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="brand-divider"></div>
+        <p class="text-clay font-body font-medium tracking-[0.25em] uppercase text-xs">Membership</p>
+        <div class="brand-divider"></div>
+      </div>
+      <h2 class="section-heading text-charcoal mb-6">
+        Find Your Seat<br />at the Table
+      </h2>
+      <p class="section-subheading text-charcoal/50 max-w-2xl mx-auto">
+        Simple, transparent pricing. Choose the membership that fits how you like to dine.
+        All prices in Bahraini Dinar.
+      </p>
+    </div>
+
+    <!-- Tiers -->
+    <div class="stagger-children grid md:grid-cols-3 gap-6 lg:gap-8 items-start">
+      {tiers.map((tier) => (
+        <div class={`relative group ${tier.featured ? "md:-mt-4 md:mb-4" : ""}`}>
+          {/* Featured badge */}
+          {tier.featured && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+              <span class="bg-saffron text-charcoal font-body font-bold text-xs tracking-widest uppercase px-5 py-1.5">
+                Most Popular
+              </span>
+            </div>
+          )}
+
+          <div class={`relative overflow-hidden transition-all duration-500 ${
+            tier.featured
+              ? "bg-charcoal text-cream border-2 border-saffron/30 shadow-2xl"
+              : "bg-porcelain text-charcoal border border-charcoal/10 hover:border-clay/30 hover:shadow-xl"
+          }`}>
+            {/* Decorative corner accent for featured */}
+            {tier.featured && (
+              <div class="absolute top-0 right-0 w-24 h-24 bg-saffron/10 blur-2xl"></div>
+            )}
+
+            <div class="relative p-8 lg:p-10">
+              {/* Tier name */}
+              <p class={`font-body font-medium tracking-widest uppercase text-xs mb-6 ${
+                tier.featured ? "text-saffron" : "text-clay"
+              }`}>
+                {tier.name}
+              </p>
+
+              {/* Price */}
+              <div class="flex items-baseline gap-1 mb-3">
+                <span class={`text-6xl font-heading font-bold ${
+                  tier.featured ? "text-cream" : "text-charcoal"
+                }`}>
+                  {tier.price}
+                </span>
+                <span class={`font-body text-lg ${
+                  tier.featured ? "text-cream/40" : "text-charcoal/40"
+                }`}>
+                  BD {tier.period}
+                </span>
+              </div>
+
+              {/* Description */}
+              <p class={`font-body font-light text-sm leading-relaxed mb-8 ${
+                tier.featured ? "text-cream/50" : "text-charcoal/50"
+              }`}>
+                {tier.description}
+              </p>
+
+              {/* Divider */}
+              <div class={`w-full h-[1px] mb-8 ${
+                tier.featured ? "bg-cream/10" : "bg-charcoal/10"
+              }`}></div>
+
+              {/* Features */}
+              <ul class="space-y-4 mb-10">
+                {tier.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <svg class={`w-4 h-4 mt-0.5 shrink-0 ${
+                      tier.featured ? "text-saffron" : "text-clay"
+                    }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class={`font-body text-sm ${
+                      tier.featured ? "text-cream/70" : "text-charcoal/60"
+                    }`}>
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <a
+                href="#waitlist"
+                class={`block w-full text-center px-8 py-4 font-body font-medium tracking-wider uppercase text-sm transition-all duration-500 ${
+                  tier.featured
+                    ? "bg-saffron text-charcoal hover:bg-saffron-light"
+                    : "border-2 border-clay text-clay hover:bg-clay hover:text-cream"
+                }`}
+              >
+                {tier.cta}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom note -->
+    <div class="reveal text-center mt-12">
+      <p class="text-charcoal/30 font-body text-sm">
+        All memberships are paid monthly via BenefitPay or card. Cancel anytime.
+        <br class="hidden md:block" />
+        Prices are subject to change. Event tickets are priced separately.
+      </p>
+    </div>
+  </div>
+</section>

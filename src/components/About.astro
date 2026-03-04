@@ -1,93 +1,114 @@
 ---
-// About section — who Palm & Plate is
-const features = [
-  {
-    icon: "🍽️",
-    title: "Curated Dining",
-    description:
-      "Hand-picked restaurants and exclusive menus crafted for our members by Bahrain's top chefs.",
-  },
-  {
-    icon: "👥",
-    title: "Community First",
-    description:
-      "More than a food club — a family of food lovers who share, discover, and celebrate together.",
-  },
-  {
-    icon: "🌟",
-    title: "Exclusive Access",
-    description:
-      "Members-only events, early reservations, and experiences you won't find anywhere else.",
-  },
-];
+import { Image } from "astro:assets";
+import laughingImg from "@/assets/images/events/vol01-laughing.jpg";
+import tableImg from "@/assets/images/events/vol01-table.jpg";
 ---
 
-<section id="about" class="section-padding bg-white">
+<section id="about" class="section-padding bg-cream-light relative overflow-hidden">
   <div class="max-w-7xl mx-auto">
-    <!-- Header -->
-    <div class="text-center mb-16">
-      <p
-        class="text-palm-600 font-medium tracking-widest uppercase text-sm mb-4"
-      >
-        Who We Are
-      </p>
-      <h2 class="section-heading mb-6">
-        A Culinary Community
-        <br />
-        Like No Other
-      </h2>
-      <p class="section-subheading mx-auto">
-        Palm & Plate brings together Bahrain's most passionate food enthusiasts.
-        We host exclusive dining events, culinary experiences, and create a space
-        where great food meets great company.
-      </p>
-    </div>
 
-    <!-- Features grid -->
-    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-      {
-        features.map((feature) => (
-          <div class="text-center p-8 rounded-2xl bg-cream hover:shadow-lg transition-shadow duration-300 group">
-            <div class="text-4xl mb-5">{feature.icon}</div>
-            <h3 class="text-xl font-heading font-semibold mb-3 group-hover:text-palm-600 transition-colors">
-              {feature.title}
-            </h3>
-            <p class="text-charcoal/60 leading-relaxed">
-              {feature.description}
-            </p>
+    <!-- Top: Story section with image -->
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-32">
+      <!-- Left: Text -->
+      <div class="reveal-left">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="brand-divider"></div>
+          <p class="text-clay font-body font-medium tracking-[0.25em] uppercase text-xs">Our Story</p>
+        </div>
+
+        <h2 class="section-heading text-charcoal mb-8">
+          For Arabs, Palms Are a Symbol of
+          <span class="text-clay">Home, Growth</span> &
+          <span class="text-olive">Hospitality</span>
+        </h2>
+
+        <p class="section-subheading text-charcoal/60 mb-6">
+          Just like our people. Palm & Plate was born from a simple belief — that the best meals aren't
+          just about what's on the plate, but who's around the table.
+        </p>
+
+        <p class="section-subheading text-charcoal/60 mb-8">
+          We are Bahrain's first food club. A community of curious palates who come together
+          for intimate, curated dining experiences at the island's most remarkable restaurants.
+        </p>
+
+        <div class="brand-divider"></div>
+      </div>
+
+      <!-- Right: Image collage -->
+      <div class="reveal-right relative">
+        <div class="relative">
+          <!-- Main image -->
+          <div class="img-zoom rounded-sm overflow-hidden shadow-2xl">
+            <Image
+              src={laughingImg}
+              alt="Members sharing a joyful moment at a Palm & Plate dinner"
+              width={700}
+              height={500}
+              quality={75}
+              format="webp"
+              class="w-full h-[500px] object-cover"
+            />
           </div>
-        ))
-      }
+          <!-- Floating accent image -->
+          <div class="absolute -bottom-8 -left-8 w-48 h-48 rounded-sm overflow-hidden shadow-xl border-4 border-cream-light hidden md:block">
+            <Image
+              src={tableImg}
+              alt="Elegant table setting"
+              width={200}
+              height={200}
+              quality={70}
+              format="webp"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <!-- Decorative element -->
+          <div class="absolute -top-6 -right-6 w-24 h-24 border-2 border-saffron/30 rounded-sm hidden md:block"></div>
+        </div>
+      </div>
     </div>
 
-    <!-- Stats -->
-    <div
-      class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-charcoal/10"
-    >
-      <div class="text-center">
-        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
-          100+
+    <!-- Bottom: Three pillars -->
+    <div class="stagger-children grid md:grid-cols-3 gap-12 lg:gap-16">
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-clay/20 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
+          <svg class="w-7 h-7 text-clay group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+          </svg>
+        </div>
+        <h3 class="font-heading text-xl mb-3 text-charcoal">Curated Experiences</h3>
+        <p class="font-body font-light text-charcoal/50 leading-relaxed">
+          Every event is hand-picked. We partner with Bahrain's finest restaurants to create
+          exclusive tasting menus you won't find anywhere else.
         </p>
-        <p class="text-sm text-charcoal/60 mt-1">Active Members</p>
       </div>
-      <div class="text-center">
-        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
-          50+
+
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-clay/20 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
+          <svg class="w-7 h-7 text-clay group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <h3 class="font-heading text-xl mb-3 text-charcoal">Intimate Community</h3>
+        <p class="font-body font-light text-charcoal/50 leading-relaxed">
+          Small tables, real connections. Our events are limited to 12 seats because the best
+          conversations happen when everyone has a voice.
         </p>
-        <p class="text-sm text-charcoal/60 mt-1">Events Hosted</p>
       </div>
-      <div class="text-center">
-        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
-          30+
+
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center border border-clay/20 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
+          <svg class="w-7 h-7 text-clay group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+        </div>
+        <h3 class="font-heading text-xl mb-3 text-charcoal">Discover Bahrain</h3>
+        <p class="font-body font-light text-charcoal/50 leading-relaxed">
+          From hidden gems to iconic spots — each volume takes you somewhere new. We're
+          rewriting the food story of our island, one plate at a time.
         </p>
-        <p class="text-sm text-charcoal/60 mt-1">Partner Restaurants</p>
-      </div>
-      <div class="text-center">
-        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
-          4.9
-        </p>
-        <p class="text-sm text-charcoal/60 mt-1">Avg Rating</p>
       </div>
     </div>
+
   </div>
 </section>
