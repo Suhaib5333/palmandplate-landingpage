@@ -1,0 +1,93 @@
+---
+// About section — who Palm & Plate is
+const features = [
+  {
+    icon: "🍽️",
+    title: "Curated Dining",
+    description:
+      "Hand-picked restaurants and exclusive menus crafted for our members by Bahrain's top chefs.",
+  },
+  {
+    icon: "👥",
+    title: "Community First",
+    description:
+      "More than a food club — a family of food lovers who share, discover, and celebrate together.",
+  },
+  {
+    icon: "🌟",
+    title: "Exclusive Access",
+    description:
+      "Members-only events, early reservations, and experiences you won't find anywhere else.",
+  },
+];
+---
+
+<section id="about" class="section-padding bg-white">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p
+        class="text-palm-600 font-medium tracking-widest uppercase text-sm mb-4"
+      >
+        Who We Are
+      </p>
+      <h2 class="section-heading mb-6">
+        A Culinary Community
+        <br />
+        Like No Other
+      </h2>
+      <p class="section-subheading mx-auto">
+        Palm & Plate brings together Bahrain's most passionate food enthusiasts.
+        We host exclusive dining events, culinary experiences, and create a space
+        where great food meets great company.
+      </p>
+    </div>
+
+    <!-- Features grid -->
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+      {
+        features.map((feature) => (
+          <div class="text-center p-8 rounded-2xl bg-cream hover:shadow-lg transition-shadow duration-300 group">
+            <div class="text-4xl mb-5">{feature.icon}</div>
+            <h3 class="text-xl font-heading font-semibold mb-3 group-hover:text-palm-600 transition-colors">
+              {feature.title}
+            </h3>
+            <p class="text-charcoal/60 leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Stats -->
+    <div
+      class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-charcoal/10"
+    >
+      <div class="text-center">
+        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
+          100+
+        </p>
+        <p class="text-sm text-charcoal/60 mt-1">Active Members</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
+          50+
+        </p>
+        <p class="text-sm text-charcoal/60 mt-1">Events Hosted</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
+          30+
+        </p>
+        <p class="text-sm text-charcoal/60 mt-1">Partner Restaurants</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl md:text-4xl font-heading font-bold text-palm-600">
+          4.9
+        </p>
+        <p class="text-sm text-charcoal/60 mt-1">Avg Rating</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,116 @@
+---
+// Hero section — full viewport, background image with overlay
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+>
+  <!-- Background placeholder — replace with actual image -->
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-plate-900 via-plate-800 to-palm-900"
+  >
+    <!-- TODO: Replace with actual hero image -->
+    <!-- <img src="/images/hero.jpg" alt="" class="w-full h-full object-cover" /> -->
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div
+    class="absolute top-20 left-10 w-72 h-72 bg-palm-500/10 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute bottom-20 right-10 w-96 h-96 bg-plate-500/10 rounded-full blur-3xl"
+  >
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+    <p
+      class="inline-block text-palm-300 font-medium tracking-widest uppercase text-sm mb-6 animate-fade-in"
+    >
+      Bahrain's Premier Food Club
+    </p>
+
+    <h1
+      class="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 animate-fade-in-up"
+    >
+      Where Every Meal
+      <br />
+      Becomes a <span class="text-palm-400">Memory</span>
+    </h1>
+
+    <p
+      class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-100"
+    >
+      Exclusive dining events, curated culinary experiences, and a passionate
+      community of food lovers — all in the heart of Bahrain.
+    </p>
+
+    <div
+      class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200"
+    >
+      <a href="#membership" class="btn-primary text-lg !px-10 !py-4">
+        Become a Member
+      </a>
+      <a href="#events" class="btn-secondary !border-white/30 !text-white hover:!bg-white/10 text-lg !px-10 !py-4">
+        View Events
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg
+      class="w-6 h-6 text-white/60"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out both;
+  }
+
+  .delay-100 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-200 {
+    animation-delay: 0.4s;
+  }
+</style>

@@ -1,0 +1,160 @@
+---
+// Membership section — join the club CTA
+const benefits = [
+  "Priority access to all dining events",
+  "Members-only exclusive experiences",
+  "Early booking & reserved seats",
+  "Connect with fellow food lovers",
+  "Special rates at partner restaurants",
+  "Monthly curated food recommendations",
+];
+---
+
+<section
+  id="membership"
+  class="section-padding bg-gradient-to-br from-plate-900 via-plate-800 to-palm-900 text-white relative overflow-hidden"
+>
+  <!-- Decorative blobs -->
+  <div
+    class="absolute top-0 right-0 w-96 h-96 bg-palm-500/10 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 w-72 h-72 bg-plate-400/10 rounded-full blur-3xl"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Left content -->
+      <div>
+        <p class="text-palm-300 font-medium tracking-widest uppercase text-sm mb-4">
+          Membership
+        </p>
+        <h2 class="section-heading text-white mb-6">
+          Join Palm & Plate
+        </h2>
+        <p class="text-white/70 text-lg mb-10 max-w-lg">
+          Become part of Bahrain's most vibrant food community. Whether you're a
+          seasoned foodie or just love a great meal — there's a place for you at
+          our table.
+        </p>
+
+        <ul class="space-y-4 mb-10">
+          {
+            benefits.map((benefit) => (
+              <li class="flex items-start gap-3">
+                <svg
+                  class="w-5 h-5 text-palm-400 mt-0.5 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span class="text-white/80">{benefit}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="https://app.palmandplate.com"
+            class="btn-primary !bg-palm-500 hover:!bg-palm-400 text-lg !px-10 !py-4"
+          >
+            Join Now
+          </a>
+          <a href="#contact" class="btn-secondary !border-white/30 !text-white hover:!bg-white/10 text-lg !px-10 !py-4">
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <!-- Right — pricing card -->
+      <div class="flex justify-center lg:justify-end">
+        <div
+          class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-10 max-w-sm w-full"
+        >
+          <p class="text-palm-300 font-medium text-sm mb-2">Membership</p>
+          <div class="flex items-baseline gap-2 mb-2">
+            <span class="text-5xl font-heading font-bold text-white">3</span>
+            <span class="text-2xl font-heading text-white/80">BHD</span>
+          </div>
+          <p class="text-white/50 text-sm mb-8">per month</p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3 text-white/80 text-sm">
+              <svg
+                class="w-4 h-4 text-palm-400 shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              All dining events access
+            </div>
+            <div class="flex items-center gap-3 text-white/80 text-sm">
+              <svg
+                class="w-4 h-4 text-palm-400 shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Members-only exclusives
+            </div>
+            <div class="flex items-center gap-3 text-white/80 text-sm">
+              <svg
+                class="w-4 h-4 text-palm-400 shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Partner restaurant perks
+            </div>
+            <div class="flex items-center gap-3 text-white/80 text-sm">
+              <svg
+                class="w-4 h-4 text-palm-400 shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Community access
+            </div>
+          </div>
+
+          <a
+            href="https://app.palmandplate.com"
+            class="btn-primary w-full text-center !bg-palm-500 hover:!bg-palm-400"
+          >
+            Get Started
+          </a>
+
+          <p class="text-white/40 text-xs text-center mt-4">
+            Cancel anytime. Paid via BenefitPay or card.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

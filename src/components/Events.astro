@@ -1,0 +1,150 @@
+---
+// Events section — upcoming events showcase
+// TODO: These will eventually pull from the API at api.palmandplate.com
+const events = [
+  {
+    title: "Chef's Table Experience",
+    date: "March 15, 2026",
+    time: "7:00 PM",
+    location: "Manama, Bahrain",
+    description:
+      "An intimate 7-course dinner with one of Bahrain's most celebrated chefs. Limited to 20 seats.",
+    spots: "4 spots left",
+    tag: "Exclusive",
+    image: null,
+  },
+  {
+    title: "Street Food Crawl",
+    date: "March 22, 2026",
+    time: "6:00 PM",
+    location: "Muharraq Souq",
+    description:
+      "Explore the hidden gems of Muharraq's food scene. Six stops, unlimited flavour.",
+    spots: "12 spots left",
+    tag: "Popular",
+    image: null,
+  },
+  {
+    title: "Bahraini Brunch Club",
+    date: "March 29, 2026",
+    time: "10:30 AM",
+    location: "Seef District",
+    description:
+      "A lavish weekend brunch celebrating traditional Bahraini cuisine with a modern twist.",
+    spots: "8 spots left",
+    tag: "New",
+    image: null,
+  },
+];
+---
+
+<section id="events" class="section-padding bg-cream">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p
+        class="text-palm-600 font-medium tracking-widest uppercase text-sm mb-4"
+      >
+        What's Coming
+      </p>
+      <h2 class="section-heading mb-6">Upcoming Events</h2>
+      <p class="section-subheading mx-auto">
+        From intimate chef's tables to lively food crawls — there's always
+        something delicious happening.
+      </p>
+    </div>
+
+    <!-- Events grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        events.map((event) => (
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+            {/* Image placeholder */}
+            <div class="relative h-52 bg-gradient-to-br from-plate-200 to-palm-200 overflow-hidden">
+              {/* TODO: Replace with actual event images */}
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-6xl opacity-30">🍴</span>
+              </div>
+              {event.tag && (
+                <span class="absolute top-4 left-4 bg-palm-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  {event.tag}
+                </span>
+              )}
+            </div>
+
+            {/* Content */}
+            <div class="p-6">
+              <h3 class="text-xl font-heading font-semibold mb-3 group-hover:text-palm-600 transition-colors">
+                {event.title}
+              </h3>
+
+              <div class="flex flex-col gap-2 mb-4 text-sm text-charcoal/60">
+                <div class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-palm-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>
+                    {event.date} · {event.time}
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-palm-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <span>{event.location}</span>
+                </div>
+              </div>
+
+              <p class="text-charcoal/60 text-sm leading-relaxed mb-5">
+                {event.description}
+              </p>
+
+              <div class="flex items-center justify-between">
+                <span class="text-palm-600 text-sm font-medium">
+                  {event.spots}
+                </span>
+                <a
+                  href="#membership"
+                  class="text-sm font-medium text-palm-600 hover:text-palm-700 transition-colors"
+                >
+                  Reserve Spot →
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a href="#membership" class="btn-secondary"> See All Events </a>
+    </div>
+  </div>
+</section>
