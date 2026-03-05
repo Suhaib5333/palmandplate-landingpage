@@ -1,10 +1,29 @@
 ---
 import { Image } from "astro:assets";
-import ambientImg from "@/assets/images/events/vol01-ambient.jpg";
-import food1Img from "@/assets/images/events/vol01-food1.jpg";
-import candidImg from "@/assets/images/events/vol01-candid.jpg";
-import detailImg from "@/assets/images/events/vol01-detail.jpg";
-import sceneImg from "@/assets/images/events/vol01-scene.jpg";
+// Vol 01 images
+import vol01AmbientImg from "@/assets/images/events/vol01-ambient.jpg";
+import vol01Food1Img from "@/assets/images/events/vol01-food1.jpg";
+import vol01CandidImg from "@/assets/images/events/vol01-candid.jpg";
+import vol01DetailImg from "@/assets/images/events/vol01-detail.jpg";
+import vol01SceneImg from "@/assets/images/events/vol01-scene.jpg";
+// Vol 02 images
+import vol02SceneImg from "@/assets/images/events/vol02/vol02-scene.jpg";
+import vol02SetupImg from "@/assets/images/events/vol02/vol02-setup.jpg";
+import vol02Food1Img from "@/assets/images/events/vol02/vol02-food1.jpg";
+import vol02MenuImg from "@/assets/images/events/vol02/vol02-menu.jpg";
+import vol02TableImg from "@/assets/images/events/vol02/vol02-table.jpg";
+// Vol 05 images
+import vol05TableImg from "@/assets/images/events/vol05/vol05-table.jpg";
+import vol05Food1Img from "@/assets/images/events/vol05/vol05-food1.jpg";
+import vol05Food2Img from "@/assets/images/events/vol05/vol05-food2.jpg";
+import vol05DessertImg from "@/assets/images/events/vol05/vol05-dessert.jpg";
+import vol05GroupImg from "@/assets/images/events/vol05/vol05-group.jpg";
+// Vol 07 images
+import vol07SetupImg from "@/assets/images/events/vol07/vol07-setup.jpg";
+import vol07GroupImg from "@/assets/images/events/vol07/vol07-group.jpg";
+import vol07Food1Img from "@/assets/images/events/vol07/vol07-food1.jpg";
+import vol07Candid2Img from "@/assets/images/events/vol07/vol07-candid2.jpg";
+import vol07DuoImg from "@/assets/images/events/vol07/vol07-duo.jpg";
 ---
 
 <section id="volumes" class="section-padding bg-cream relative overflow-hidden">
@@ -24,13 +43,13 @@ import sceneImg from "@/assets/images/events/vol01-scene.jpg";
       </p>
     </div>
 
-    <!-- Volume 01 — Monsoon (Featured) -->
+    <!-- Volume 01 — Monsoon -->
     <div class="reveal-scale mb-16">
       <div class="relative bg-charcoal rounded-sm overflow-hidden group">
         <div class="grid lg:grid-cols-2">
           <div class="relative h-[400px] lg:h-[600px] overflow-hidden">
             <Image
-              src={ambientImg}
+              src={vol01AmbientImg}
               alt="Volume 01 — Loy Krathong at Monsoon"
               width={900}
               height={600}
@@ -76,16 +95,220 @@ import sceneImg from "@/assets/images/events/vol01-scene.jpg";
         <!-- Photo strip -->
         <div class="grid grid-cols-4 gap-[2px]">
           <div class="img-zoom h-32 md:h-48">
-            <Image src={food1Img} alt="Dining moment" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+            <Image src={vol01Food1Img} alt="Dining moment" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
           </div>
           <div class="img-zoom h-32 md:h-48">
-            <Image src={candidImg} alt="Member enjoying dinner" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+            <Image src={vol01CandidImg} alt="Member enjoying dinner" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
           </div>
           <div class="img-zoom h-32 md:h-48">
-            <Image src={detailImg} alt="Event detail" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+            <Image src={vol01DetailImg} alt="Event detail" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
           </div>
           <div class="img-zoom h-32 md:h-48">
-            <Image src={sceneImg} alt="Dinner scene" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+            <Image src={vol01SceneImg} alt="Dinner scene" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Volume 02 — Osteria -->
+    <div class="reveal-scale mb-16">
+      <div class="relative bg-charcoal rounded-sm overflow-hidden group">
+        <div class="grid lg:grid-cols-2">
+          <div class="relative h-[400px] lg:h-[600px] overflow-hidden lg:order-2">
+            <Image
+              src={vol02SceneImg}
+              alt="Volume 02 — Italian Night at Osteria"
+              width={900}
+              height={600}
+              quality={75}
+              format="webp"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+            />
+            <div class="absolute top-6 left-6 lg:left-auto lg:right-6 bg-saffron px-4 py-2">
+              <span class="font-body font-bold text-charcoal text-xs tracking-widest uppercase">Vol. 02</span>
+            </div>
+          </div>
+
+          <div class="p-10 md:p-14 lg:p-16 flex flex-col justify-center lg:order-1">
+            <span class="text-saffron/60 font-body text-sm tracking-widest uppercase mb-3">November 20th, 2025</span>
+            <h3 class="font-heading text-3xl md:text-4xl text-cream mb-2">Italian Night</h3>
+            <p class="text-cream/40 font-body text-sm mb-6">at Osteria — An Evening Under the Lights</p>
+            <div class="brand-divider mb-6"></div>
+            <p class="text-cream/60 font-body font-light leading-relaxed mb-8">
+              Our second chapter took us to a beautiful outdoor terrace for an authentic Italian feast.
+              Handmade pizzas, artichoke dishes, fresh salads — all shared family style under string lights
+              with the Bahrain skyline as our backdrop.
+            </p>
+            <div class="grid grid-cols-3 gap-6 mb-8">
+              <div>
+                <p class="text-2xl font-heading text-saffron">7</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Courses</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">14</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Seats</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">12</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">BD / Person</p>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-2 text-saffron font-body text-sm tracking-wider uppercase">
+              <span class="w-2 h-2 rounded-full bg-clay"></span>
+              Sold Out
+            </span>
+          </div>
+        </div>
+
+        <!-- Photo strip -->
+        <div class="grid grid-cols-4 gap-[2px]">
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol02SetupImg} alt="Table setup at Osteria" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol02Food1Img} alt="Italian salad" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol02MenuImg} alt="Menu card at Osteria" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol02TableImg} alt="Long table dinner" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Volume 05 — Diana's Christmas -->
+    <div class="reveal-scale mb-16">
+      <div class="relative bg-charcoal rounded-sm overflow-hidden group">
+        <div class="grid lg:grid-cols-2">
+          <div class="relative h-[400px] lg:h-[600px] overflow-hidden">
+            <Image
+              src={vol05GroupImg}
+              alt="Volume 05 — Christmas Dinner at Diana's"
+              width={900}
+              height={600}
+              quality={75}
+              format="webp"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+            />
+            <div class="absolute top-6 left-6 bg-saffron px-4 py-2">
+              <span class="font-body font-bold text-charcoal text-xs tracking-widest uppercase">Vol. 05</span>
+            </div>
+          </div>
+
+          <div class="p-10 md:p-14 lg:p-16 flex flex-col justify-center">
+            <span class="text-saffron/60 font-body text-sm tracking-widest uppercase mb-3">December 22nd, 2025</span>
+            <h3 class="font-heading text-3xl md:text-4xl text-cream mb-2">Holiday Feast</h3>
+            <p class="text-cream/40 font-body text-sm mb-6">Palm & Plate x Diana's — A Christmas Celebration</p>
+            <div class="brand-divider mb-6"></div>
+            <p class="text-cream/60 font-body font-light leading-relaxed mb-8">
+              A festive collaboration with Diana's for a Christmas dinner to remember. Roasted meats,
+              chocolate lava cake, bruschetta, and seasonal sides — shared family style in a warm,
+              candlelit setting with Santa hats and holiday spirit all around.
+            </p>
+            <div class="grid grid-cols-3 gap-6 mb-8">
+              <div>
+                <p class="text-2xl font-heading text-saffron">8</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Courses</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">20</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Seats</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">15</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">BD / Person</p>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-2 text-saffron font-body text-sm tracking-wider uppercase">
+              <span class="w-2 h-2 rounded-full bg-clay"></span>
+              Sold Out
+            </span>
+          </div>
+        </div>
+
+        <!-- Photo strip -->
+        <div class="grid grid-cols-4 gap-[2px]">
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol05Food1Img} alt="Bruschetta appetizer" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol05Food2Img} alt="Lasagna with candles" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol05DessertImg} alt="Chocolate lava cake" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol05TableImg} alt="Christmas dinner table" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Volume 07 — Rooftop Courtyard -->
+    <div class="reveal-scale mb-16">
+      <div class="relative bg-charcoal rounded-sm overflow-hidden group">
+        <div class="grid lg:grid-cols-2">
+          <div class="relative h-[400px] lg:h-[600px] overflow-hidden">
+            <Image
+              src={vol07DuoImg}
+              alt="Volume 07 — Rooftop Courtyard Dinner"
+              width={900}
+              height={600}
+              quality={75}
+              format="webp"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+            />
+            <div class="absolute top-6 left-6 bg-saffron px-4 py-2">
+              <span class="font-body font-bold text-charcoal text-xs tracking-widest uppercase">Vol. 07</span>
+            </div>
+          </div>
+
+          <div class="p-10 md:p-14 lg:p-16 flex flex-col justify-center">
+            <span class="text-saffron/60 font-body text-sm tracking-widest uppercase mb-3">January 26th, 2026</span>
+            <h3 class="font-heading text-3xl md:text-4xl text-cream mb-2">Rooftop Supper</h3>
+            <p class="text-cream/40 font-body text-sm mb-6">A Courtyard Dinner Under the Stars</p>
+            <div class="brand-divider mb-6"></div>
+            <p class="text-cream/60 font-body font-light leading-relaxed mb-8">
+              An intimate rooftop courtyard transformed into a candlelit dining room. Hearty grilled dishes,
+              hummus with fresh bread, and skewers passed around a communal table — surrounded by old Bahraini
+              architecture and string lights overhead.
+            </p>
+            <div class="grid grid-cols-3 gap-6 mb-8">
+              <div>
+                <p class="text-2xl font-heading text-saffron">8</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Courses</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">15</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">Seats</p>
+              </div>
+              <div>
+                <p class="text-2xl font-heading text-saffron">14</p>
+                <p class="text-cream/40 font-body text-xs tracking-wider uppercase mt-1">BD / Person</p>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-2 text-saffron font-body text-sm tracking-wider uppercase">
+              <span class="w-2 h-2 rounded-full bg-clay"></span>
+              Sold Out
+            </span>
+          </div>
+        </div>
+
+        <!-- Photo strip -->
+        <div class="grid grid-cols-4 gap-[2px]">
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol07Food1Img} alt="Plated course" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol07Candid2Img} alt="Members enjoying dinner" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol07SetupImg} alt="Rooftop table setup" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="img-zoom h-32 md:h-48">
+            <Image src={vol07GroupImg} alt="Vol 07 group photo" width={480} height={192} quality={70} format="webp" class="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
       </div>

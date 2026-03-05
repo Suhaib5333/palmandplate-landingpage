@@ -1,23 +1,36 @@
 ---
 import { Image } from "astro:assets";
-import ambientImg from "@/assets/images/events/vol01-ambient.jpg";
-import portraitImg from "@/assets/images/events/vol01-portrait.jpg";
-import duoImg from "@/assets/images/events/vol01-duo.jpg";
-import candidImg from "@/assets/images/events/vol01-candid.jpg";
-import food2Img from "@/assets/images/events/vol01-food2.jpg";
-import laughingImg from "@/assets/images/events/vol01-laughing.jpg";
-import momentImg from "@/assets/images/events/vol01-moment.jpg";
-import sceneImg from "@/assets/images/events/vol01-scene.jpg";
+// Vol 01 — Monsoon (unused elsewhere)
+import vol01LaughingImg from "@/assets/images/events/vol01-laughing.jpg";
+import vol01DuoImg from "@/assets/images/events/vol01-duo.jpg";
+import vol01TableImg from "@/assets/images/events/vol01-table.jpg";
+import vol01PortraitImg from "@/assets/images/events/vol01-portrait.jpg";
+// Vol 02 — Osteria (unused elsewhere)
+import vol02Food2Img from "@/assets/images/events/vol02/vol02-food2.jpg";
+// Vol 05 — Diana's Christmas (unused elsewhere)
+import vol05FeastImg from "@/assets/images/events/vol05/vol05-feast.jpg";
+import vol05MomentImg from "@/assets/images/events/vol05/vol05-moment.jpg";
+import vol05OutsideImg from "@/assets/images/events/vol05/vol05-outside.jpg";
+// Vol 07 — Rooftop (unused elsewhere)
+import vol07SceneImg from "@/assets/images/events/vol07/vol07-scene.jpg";
+import vol07LambImg from "@/assets/images/events/vol07/vol07-lamb.jpg";
+import vol07Food2Img from "@/assets/images/events/vol07/vol07-food2.jpg";
 
 const images = [
-  { src: ambientImg, alt: "The atmosphere at Vol 01", span: "col-span-2 row-span-2", w: 800, h: 600 },
-  { src: portraitImg, alt: "Member at Monsoon", span: "row-span-2", w: 400, h: 600 },
-  { src: duoImg, alt: "Friends at the table", span: "", w: 400, h: 300 },
-  { src: candidImg, alt: "Candid moment at dinner", span: "", w: 400, h: 300 },
-  { src: food2Img, alt: "A beautifully plated course", span: "", w: 400, h: 300 },
-  { src: laughingImg, alt: "Joy at the table", span: "col-span-2", w: 800, h: 300 },
-  { src: momentImg, alt: "Members connecting over food", span: "", w: 400, h: 300 },
-  { src: sceneImg, alt: "The dinner scene", span: "", w: 400, h: 300 },
+  // Row 1-2: large hero + tall side + 2 singles
+  { src: vol01LaughingImg, alt: "Joy at a Vol 01 dinner — Monsoon", span: "col-span-2 row-span-2", w: 800, h: 600 },
+  { src: vol07SceneImg, alt: "Members at the Vol 07 rooftop", span: "row-span-2", w: 400, h: 600 },
+  { src: vol02Food2Img, alt: "Artichoke dish at Vol 02 — Osteria", span: "", w: 400, h: 300 },
+  { src: vol05MomentImg, alt: "Henna hand at the Christmas dinner — Vol 05", span: "", w: 400, h: 300 },
+  // Row 3: 4 singles
+  { src: vol01DuoImg, alt: "Friends at a Palm & Plate dinner", span: "", w: 400, h: 300 },
+  { src: vol07Food2Img, alt: "Hummus and bread at Vol 07", span: "", w: 400, h: 300 },
+  { src: vol05FeastImg, alt: "Roast vegetables at Diana's — Vol 05", span: "", w: 400, h: 300 },
+  { src: vol01PortraitImg, alt: "Member portrait at Monsoon", span: "", w: 400, h: 300 },
+  // Row 4: wide + 2 singles
+  { src: vol01TableImg, alt: "Table setting at Monsoon", span: "col-span-2", w: 800, h: 300 },
+  { src: vol07LambImg, alt: "Lamb chop at the rooftop dinner — Vol 07", span: "", w: 400, h: 300 },
+  { src: vol05OutsideImg, alt: "Members outside Diana's — Vol 05", span: "", w: 400, h: 300 },
 ];
 ---
 
