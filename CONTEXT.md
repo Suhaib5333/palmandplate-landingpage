@@ -75,10 +75,12 @@ Brand assets in `src/assets/images/brand/`:
 
 ## Navigation & Links
 - **Navbar desktop:** About | Volumes | Gallery | Pricing | Contact | Log In | [Join the Waitlist]
-- **Navbar "Join the Waitlist" button** → links directly to https://app.palmandplate.com
+- **Navbar "Join the Waitlist" button** → scrolls to `#waitlist` section on page
 - **Navbar "Log In"** → https://app.palmandplate.com/login
-- **Mobile menu:** Full-screen overlay with same links + "Already a member? Log in"
-- **Footer:** Navigate links include Log In, plus social links (Instagram, WhatsApp, X)
+- **Mobile menu:** Full-screen overlay with same links + "Already a member? Log in" (menu auto-closes on link click)
+- **Hero "Join the Waitlist" button** → scrolls to `#waitlist` section on page
+- **Hero scroll indicator:** Centered animated down-arrow at bottom (bouncing chevron in circle, links to #about)
+- **Footer:** Navigate links include Log In, plus social links (Instagram, WhatsApp only — no X/Twitter)
 - **Waitlist section:** Big CTA → app.palmandplate.com + "Already a member? Log in" text link
 - **Pricing cards:** All tier CTAs → app.palmandplate.com
 - **Instagram:** @palmnplate (different handle from domain)
@@ -101,5 +103,8 @@ Classes defined in global.css, triggered by IntersectionObserver in Layout.astro
 - `.img-zoom` — hover zoom on images
 
 ## Git
-- `.gitignore` includes `docs/` to prevent large source files from being tracked
+- `.gitignore` includes `docs/` and `CLAUDE.md`
 - `docs/` folder has been deleted locally (was 10GB raw source photos/videos)
+
+## Maintenance
+- **IMPORTANT:** Keep `context.md`, `CLAUDE.md`, and `MEMORY.md` up to date whenever changes are made to the project structure, navigation, images, domains, or any other key details. These files should always reflect the current state of the project.
