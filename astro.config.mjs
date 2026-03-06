@@ -5,4 +5,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://palmandplate.com",
   integrations: [tailwind(), sitemap()],
+  devToolbar: {
+    enabled: false,
+  },
 });

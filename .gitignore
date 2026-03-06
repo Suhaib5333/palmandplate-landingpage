@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # brand source docs (large videos, PDFs, raw assets)
 docs/
+
+# Claude config
+CLAUDE.md

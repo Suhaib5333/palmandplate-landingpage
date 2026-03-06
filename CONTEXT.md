@@ -4,8 +4,11 @@
 - **What:** Landing page for Palm & Plate, Bahrain's first food club (~100 members)
 - **Framework:** Astro + Tailwind CSS + TypeScript
 - **Repo:** https://github.com/Suhaib5333/palmandplate-landingpage.git
-- **Domain:** palmnplate.com (note: palmnplate, NOT palmandplate)
-- **App URL:** https://app.palmnplate.com (member login: /login)
+- **Domain:** www.palmandplate.com
+- **App URL:** https://app.palmandplate.com (member login: /login)
+- **Admin URL:** https://admin.palmandplate.com (NOT linked from landing page)
+- **Instagram:** @palmnplate (note: different from domain)
+- **Email:** info@palmandplate.com
 - **Purpose:** Marketing/brochure site with waitlist CTA, separate from main app monorepo
 
 ## Brand Identity
@@ -27,7 +30,7 @@
 `Navbar → Hero → About → HowItWorks → Volumes → Gallery → Pricing → Waitlist → Footer`
 
 ## Key Files
-- `tailwind.config.mjs` — Brand colors, custom fonts
+- `tailwind.config.mjs` — Brand colors, custom fonts, display text sizes
 - `src/styles/global.css` — @font-face, scroll animations, grain texture, component classes
 - `src/layouts/Layout.astro` — Base HTML with IntersectionObserver, favicon, meta tags
 - `src/pages/index.astro` — Main page composition
@@ -68,20 +71,25 @@ Brand assets in `src/assets/images/brand/`:
 | 02 | Italian Night | Osteria | Nov 20, 2025 | 7 | 14 | 12 BD |
 | 05 | Holiday Feast | Diana's | Dec 22, 2025 | 8 | 20 | 15 BD |
 | 07 | Rooftop Supper | (Courtyard) | Jan 26, 2026 | 8 | 15 | 14 BD |
-| 10 | Coming Soon | TBD | TBD | — | — | — |
+| More | "More Volumes to Come" teaser at bottom |
 
-## Navigation
-- Desktop: About | Volumes | Gallery | Pricing | Contact | Log In | [Join the Waitlist]
-- Mobile: Full-screen overlay with same links + "Already a member? Log in" below CTA
-- Footer: Navigate links include Log In, plus social links (Instagram, WhatsApp, X)
-- Waitlist section: Big CTA + "Already a member? Log in" text link
+## Navigation & Links
+- **Navbar desktop:** About | Volumes | Gallery | Pricing | Contact | Log In | [Join the Waitlist]
+- **Navbar "Join the Waitlist" button** → links directly to https://app.palmandplate.com
+- **Navbar "Log In"** → https://app.palmandplate.com/login
+- **Mobile menu:** Full-screen overlay with same links + "Already a member? Log in"
+- **Footer:** Navigate links include Log In, plus social links (Instagram, WhatsApp, X)
+- **Waitlist section:** Big CTA → app.palmandplate.com + "Already a member? Log in" text link
+- **Pricing cards:** All tier CTAs → app.palmandplate.com
+- **Instagram:** @palmnplate (different handle from domain)
 
 ## User Preferences
 - **NEVER include "Co-Authored-By: Claude" in git commits**
 - User prefers `main` branch (not `master`)
 - User wants lively, animation-rich, photo-heavy UI/UX
-- Email: info@palmnplate.com
-- `docs/` folder is gitignored and has been deleted locally (was 10GB of raw source photos/videos)
+- User iterates heavily on image selection — check for face cropping, blurriness, content suitability
+- User doesn't want duplicate images across sections
+- User prefers food/scene shots over people shots when cropping is an issue
 
 ## Scroll Animations
 Classes defined in global.css, triggered by IntersectionObserver in Layout.astro:
@@ -94,5 +102,4 @@ Classes defined in global.css, triggered by IntersectionObserver in Layout.astro
 
 ## Git
 - `.gitignore` includes `docs/` to prevent large source files from being tracked
-- Previous push timeout was caused by docs/ folder (385MB video + raw photos making repo 1.2GB)
-- After cleanup, repo is ~338MB
+- `docs/` folder has been deleted locally (was 10GB raw source photos/videos)

@@ -24,8 +24,8 @@ export default {
         logo: ['"Amrys"', "serif"],
       },
       fontSize: {
-        "display": ["clamp(3rem, 8vw, 7rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
-        "display-sm": ["clamp(2rem, 5vw, 4rem)", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
+        "display": ["clamp(2.75rem, 6vw, 5.5rem)", { lineHeight: "1.25", letterSpacing: "-0.02em" }],
+        "display-sm": ["clamp(2rem, 5vw, 4rem)", { lineHeight: "1.3", letterSpacing: "-0.01em" }],
       },
       spacing: {
         "section": "clamp(5rem, 10vw, 8rem)",

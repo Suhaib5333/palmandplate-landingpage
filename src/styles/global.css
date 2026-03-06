@@ -59,7 +59,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-heading leading-[1.3];
   }
 
   ::selection {
@@ -75,7 +75,8 @@
   }
 
   .section-heading {
-    @apply text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.1];
+    @apply text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight;
+    line-height: 1.3 !important;
   }
 
   .section-subheading {
