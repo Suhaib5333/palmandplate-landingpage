@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { urls } from "@/config";
 import logoCream from "@/assets/images/brand/logo-full-cream.png";
 
 const currentYear = new Date().getFullYear();
@@ -10,7 +11,7 @@ const quickLinks = [
   { label: "Gallery", href: "#gallery" },
   { label: "Pricing", href: "#pricing" },
   { label: "Join Waitlist", href: "#waitlist" },
-  { label: "Log In", href: "https://app.palmandplate.com/login" },
+  { label: "Log In", href: urls.login },
 ];
 ---
 

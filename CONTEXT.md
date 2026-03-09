@@ -26,16 +26,31 @@
 - Page title: "Palm & Plate"
 - Favicon: Gold logo icon PNG (`public/favicon.png`)
 
+## App URLs (Environment-Based)
+Centralized in `src/config.ts`, controlled by `VITE_APP_ENV` env variable:
+| Env | Base URL | Login | Register |
+|-----|----------|-------|----------|
+| dev | http://localhost:5173 | /login | /register |
+| uat | https://uat.palmandplate.com | /login | /register |
+| prod | https://app.palmandplate.com | /login | /register |
+
+- `.env` sets `VITE_APP_ENV=dev` (local development)
+- `.env.production` sets `VITE_APP_ENV=prod` (production builds)
+- All components import `{ urls }` from `@/config` — no hardcoded app URLs in components
+
 ## Page Structure (index.astro)
 `Navbar → Hero → About → HowItWorks → Volumes → Gallery → Pricing → Waitlist → Footer`
 
 ## Key Files
+- `src/config.ts` — Centralized app URLs (login, register) per environment
 - `tailwind.config.mjs` — Brand colors, custom fonts, display text sizes
 - `src/styles/global.css` — @font-face, scroll animations, grain texture, component classes
 - `src/layouts/Layout.astro` — Base HTML with IntersectionObserver, favicon, meta tags
 - `src/pages/index.astro` — Main page composition
 - `src/components/` — All section components
 - `public/fonts/` — TAN Ashford, DIN Next family, Amrys Bold
+- `.env` — Dev environment config (`VITE_APP_ENV=dev`)
+- `.env.production` — Prod environment config (`VITE_APP_ENV=prod`)
 
 ## Image Organization
 All event images live in `src/assets/images/events/`:
@@ -81,8 +96,8 @@ Brand assets in `src/assets/images/brand/`:
 - **Hero "Join the Waitlist" button** → scrolls to `#waitlist` section on page
 - **Hero scroll indicator:** Centered animated down-arrow at bottom (bouncing chevron in circle, links to #about)
 - **Footer:** Navigate links include Log In, plus social links (Instagram, WhatsApp only — no X/Twitter)
-- **Waitlist section:** Big CTA → app.palmandplate.com + "Already a member? Log in" text link
-- **Pricing cards:** All tier CTAs → app.palmandplate.com
+- **Waitlist section:** Big CTA → {urls.register} + "Already a member? Log in" → {urls.login}
+- **Pricing cards:** All tier CTAs → {urls.register}
 - **Instagram:** @palmnplate (different handle from domain)
 
 ## User Preferences
