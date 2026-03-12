@@ -51,7 +51,7 @@ const tiers = [
 ];
 ---
 
-<section id="pricing" class="section-padding bg-cream-light relative overflow-hidden">
+<section id="pricing" class="section-padding bg-charcoal relative overflow-hidden">
   <!-- Subtle decorative -->
   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-saffron/20 to-transparent"></div>
 
@@ -59,14 +59,14 @@ const tiers = [
     <!-- Header -->
     <div class="text-center mb-20 reveal">
       <div class="flex items-center justify-center gap-3 mb-6">
-        <div class="brand-divider"></div>
-        <p class="text-clay font-body font-medium tracking-[0.25em] uppercase text-xs">Membership</p>
-        <div class="brand-divider"></div>
+        <div class="w-16 h-0.5 bg-saffron"></div>
+        <p class="text-saffron font-body font-medium tracking-[0.25em] uppercase text-xs">Membership</p>
+        <div class="w-16 h-0.5 bg-saffron"></div>
       </div>
-      <h2 class="section-heading text-charcoal mb-6">
+      <h2 class="section-heading text-cream mb-6">
         Find Your Seat<br />at the Table
       </h2>
-      <p class="section-subheading text-charcoal/50 max-w-2xl mx-auto">
+      <p class="section-subheading text-cream/50 max-w-2xl mx-auto">
         Simple, transparent pricing. Choose the membership that fits how you like to dine.
         All prices in Bahraini Dinar.
       </p>
@@ -87,8 +87,8 @@ const tiers = [
 
           <div class={`relative overflow-hidden transition-all duration-500 ${
             tier.featured
-              ? "bg-charcoal text-cream border-2 border-saffron/30 shadow-2xl"
-              : "bg-porcelain text-charcoal border border-charcoal/10 hover:border-clay/30 hover:shadow-xl"
+              ? "bg-cream text-charcoal border-2 border-saffron/30 shadow-2xl"
+              : "bg-cream/[0.05] text-cream border border-cream/10 hover:border-saffron/30 hover:shadow-xl"
           }`}>
             {/* Decorative corner accent for featured */}
             {tier.featured && (
@@ -98,7 +98,7 @@ const tiers = [
             <div class="relative p-8 lg:p-10">
               {/* Tier name */}
               <p class={`font-body font-medium tracking-widest uppercase text-xs mb-6 ${
-                tier.featured ? "text-saffron" : "text-clay"
+                tier.featured ? "text-clay" : "text-saffron"
               }`}>
                 {tier.name}
               </p>
@@ -106,12 +106,12 @@ const tiers = [
               {/* Price */}
               <div class="flex items-baseline gap-1 mb-3">
                 <span class={`text-6xl font-heading font-bold ${
-                  tier.featured ? "text-cream" : "text-charcoal"
+                  tier.featured ? "text-charcoal" : "text-cream"
                 }`}>
                   {tier.price}
                 </span>
                 <span class={`font-body text-lg ${
-                  tier.featured ? "text-cream/40" : "text-charcoal/40"
+                  tier.featured ? "text-charcoal/40" : "text-cream/40"
                 }`}>
                   BD {tier.period}
                 </span>
@@ -119,14 +119,14 @@ const tiers = [
 
               {/* Description */}
               <p class={`font-body font-light text-sm leading-relaxed mb-8 ${
-                tier.featured ? "text-cream/50" : "text-charcoal/50"
+                tier.featured ? "text-charcoal/50" : "text-cream/50"
               }`}>
                 {tier.description}
               </p>
 
               {/* Divider */}
               <div class={`w-full h-[1px] mb-8 ${
-                tier.featured ? "bg-cream/10" : "bg-charcoal/10"
+                tier.featured ? "bg-charcoal/10" : "bg-cream/10"
               }`}></div>
 
               {/* Features */}
@@ -134,12 +134,12 @@ const tiers = [
                 {tier.features.map((feature) => (
                   <li class="flex items-start gap-3">
                     <svg class={`w-4 h-4 mt-0.5 shrink-0 ${
-                      tier.featured ? "text-saffron" : "text-clay"
+                      tier.featured ? "text-clay" : "text-saffron"
                     }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     <span class={`font-body text-sm ${
-                      tier.featured ? "text-cream/70" : "text-charcoal/60"
+                      tier.featured ? "text-charcoal/60" : "text-cream/70"
                     }`}>
                       {feature}
                     </span>
@@ -152,8 +152,8 @@ const tiers = [
                 href={urls.register}
                 class={`block w-full text-center px-8 py-4 font-body font-medium tracking-wider uppercase text-sm transition-all duration-500 ${
                   tier.featured
-                    ? "bg-saffron text-charcoal hover:bg-saffron-light"
-                    : "border-2 border-clay text-clay hover:bg-clay hover:text-cream"
+                    ? "bg-clay text-cream hover:bg-saffron hover:text-charcoal"
+                    : "border-2 border-saffron/40 text-saffron hover:bg-saffron hover:text-charcoal"
                 }`}
               >
                 {tier.cta}
@@ -166,7 +166,7 @@ const tiers = [
 
     <!-- Bottom note -->
     <div class="reveal text-center mt-12">
-      <p class="text-charcoal/30 font-body text-sm">
+      <p class="text-cream/30 font-body text-sm">
         All memberships are paid monthly via BenefitPay or card. Cancel anytime.
         <br class="hidden md:block" />
         Prices are subject to change. Event tickets are priced separately.

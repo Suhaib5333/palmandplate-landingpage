@@ -39,7 +39,7 @@ Centralized in `src/config.ts`, controlled by `VITE_APP_ENV` env variable:
 - All components import `{ urls }` from `@/config` — no hardcoded app URLs in components
 
 ## Page Structure (index.astro)
-`Navbar → Hero → About → HowItWorks → Volumes → Gallery → Pricing → Waitlist → Footer`
+`Navbar → Hero → About → HowItWorks → Volumes → Gallery → Testimonials → Pricing → Waitlist → Footer`
 
 ## Key Files
 - `src/config.ts` — Centralized app URLs (login, register) per environment
