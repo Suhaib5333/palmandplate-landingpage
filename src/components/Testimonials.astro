@@ -16,10 +16,14 @@ const testimonials = [
     quote: "11/10 no words needed.",
     name: "Ahmed",
   },
+  {
+    quote: "Absolutely. I'll fly in from Dubai for this if I'm invited again!",
+    name: "Sara",
+  },
 ];
 
-// Prepend last item + original + append first item for seamless looping
-const looped = [testimonials[testimonials.length - 1], ...testimonials, testimonials[0]];
+// Triple the array for seamless infinite scroll
+const tripled = [...testimonials, ...testimonials, ...testimonials];
 ---
 
 <section class="relative overflow-hidden bg-cream-light py-24 md:py-32">
@@ -45,19 +49,19 @@ const looped = [testimonials[testimonials.length - 1], ...testimonials, testimon
   </div>
 
   <!-- Scrolling testimonials track -->
-  <div class="relative z-10">
+  <div class="relative z-10 testimonial-wrapper">
     <!-- Gradient fade edges -->
     <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-cream-light to-transparent z-20 pointer-events-none"></div>
     <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-cream-light to-transparent z-20 pointer-events-none"></div>
 
-    <!-- Scrolling track -->
+    <!-- Scrolling track — continuous CSS animation -->
     <div class="testimonial-track flex gap-6 md:gap-8" id="testimonial-track">
-      {looped.map((t, i) => (
+      {tripled.map((t, i) => (
         <div class="testimonial-card flex-shrink-0 w-[85vw] md:w-[560px] lg:w-[640px] relative group">
-          <div class="h-full border border-charcoal/[0.08] bg-white/60 p-8 md:p-12 transition-all duration-700 hover:border-clay/20 hover:bg-white/80">
+          <div class="h-full border border-charcoal/[0.08] bg-white/60 p-8 md:p-12 transition-colors duration-500 hover:border-clay/20 hover:bg-white/80">
             <!-- Large quote mark -->
             <div class="mb-6 md:mb-8">
-              <svg class="w-10 h-10 md:w-14 md:h-14 text-clay/20 group-hover:text-clay/40 transition-colors duration-700" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-10 h-10 md:w-14 md:h-14 text-clay/20 group-hover:text-clay/40 transition-colors duration-500" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
               </svg>
             </div>
@@ -79,180 +83,103 @@ const looped = [testimonials[testimonials.length - 1], ...testimonials, testimon
       ))}
     </div>
   </div>
-
-  <!-- Navigation dots -->
-  <div class="relative z-10 flex justify-center gap-3 mt-12 md:mt-16" id="testimonial-dots">
-    {testimonials.map((_, i) => (
-      <button
-        class={`testimonial-dot w-2 h-2 rounded-full transition-all duration-500 ${i === 0 ? "bg-clay w-8" : "bg-charcoal/20 hover:bg-charcoal/40"}`}
-        data-index={i}
-        aria-label={`Go to testimonial ${i + 1}`}
-      />
-    ))}
-  </div>
 </section>
 
 <script>
   const track = document.getElementById("testimonial-track") as HTMLElement;
-  const dots = document.querySelectorAll(".testimonial-dot");
-  const cards = document.querySelectorAll(".testimonial-card");
-  const totalOriginal = dots.length; // 4 real testimonials
-  // Layout: [clone-last, 0, 1, 2, 3, clone-first] — 6 cards total
-  // "index 0" in the real set = card index 1 in the DOM
+  if (!track) throw new Error("Testimonial track not found");
 
-  if (!track || totalOriginal === 0) throw new Error("Testimonials not found");
+  const cards = track.querySelectorAll(".testimonial-card");
+  const totalOriginal = 5; // number of real testimonials
+  const totalCards = cards.length; // 15 (tripled)
 
-  let currentIndex = 0; // refers to the real testimonial index (0-3)
-  let isAnimating = false;
-  let autoplayTimer: ReturnType<typeof setInterval>;
-  let isPaused = false;
-
-  function getCardWidth(): number {
-    const card = cards[0] as HTMLElement;
+  // Calculate one set width for the animation
+  function getOneSetWidth(): number {
     const gap = window.innerWidth >= 768 ? 32 : 24;
-    return card.offsetWidth + gap;
+    let width = 0;
+    for (let i = 0; i < totalOriginal; i++) {
+      width += (cards[i] as HTMLElement).offsetWidth + gap;
+    }
+    return width;
   }
 
-  function getTrackPadding(): number {
-    const style = window.getComputedStyle(track);
-    return parseFloat(style.paddingLeft) || 0;
+  // Set the CSS custom property for animation distance
+  function updateAnimationWidth() {
+    const oneSetWidth = getOneSetWidth();
+    track.style.setProperty("--set-width", `${oneSetWidth}px`);
   }
 
-  function updateDots(index: number) {
-    const realIndex = ((index % totalOriginal) + totalOriginal) % totalOriginal;
-    dots.forEach((dot, i) => {
-      if (i === realIndex) {
-        dot.classList.add("bg-clay", "w-8");
-        dot.classList.remove("bg-charcoal/20", "hover:bg-charcoal/40");
-        (dot as HTMLElement).style.width = "2rem";
-      } else {
-        dot.classList.remove("bg-clay", "w-8");
-        dot.classList.add("bg-charcoal/20", "hover:bg-charcoal/40");
-        (dot as HTMLElement).style.width = "";
-      }
-    });
+  // Start from the middle set so there's content on both sides
+  function positionTrack() {
+    const oneSetWidth = getOneSetWidth();
+    // Offset by one full set so the first visible card has content to its left
+    track.style.setProperty("--start-offset", `-${oneSetWidth}px`);
   }
-
-  // domIndex = currentIndex + 1 (because of prepended clone)
-  function scrollToDomIndex(domIndex: number, smooth = true) {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    const cardWidth = getCardWidth();
-    const offset = domIndex * cardWidth;
-
-    track.style.transition = smooth ? "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)" : "none";
-    track.style.transform = `translateX(-${offset}px)`;
-
-    const realIndex = domIndex - 1;
-    updateDots(realIndex);
-
-    setTimeout(() => {
-      // If scrolled to the clone-first (domIndex = totalOriginal + 1), snap to real first (domIndex 1)
-      if (domIndex >= totalOriginal + 1) {
-        currentIndex = 0;
-        track.style.transition = "none";
-        track.style.transform = `translateX(-${1 * cardWidth}px)`;
-      }
-      // If scrolled to clone-last (domIndex = 0), snap to real last (domIndex = totalOriginal)
-      else if (domIndex <= 0) {
-        currentIndex = totalOriginal - 1;
-        track.style.transition = "none";
-        track.style.transform = `translateX(-${totalOriginal * cardWidth}px)`;
-      }
-      else {
-        currentIndex = domIndex - 1;
-      }
-      isAnimating = false;
-    }, smooth ? 850 : 50);
-  }
-
-  function nextSlide() {
-    const domIndex = currentIndex + 1; // current dom position
-    scrollToDomIndex(domIndex + 1); // go to next
-  }
-
-  function prevSlide() {
-    const domIndex = currentIndex + 1;
-    scrollToDomIndex(domIndex - 1);
-  }
-
-  function goToSlide(realIndex: number) {
-    scrollToDomIndex(realIndex + 1);
-  }
-
-  function startAutoplay() {
-    stopAutoplay();
-    autoplayTimer = setInterval(() => {
-      if (!isPaused) nextSlide();
-    }, 2000);
-  }
-
-  function stopAutoplay() {
-    clearInterval(autoplayTimer);
-  }
-
-  // Dot click navigation
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      const index = parseInt((dot as HTMLElement).dataset.index || "0");
-      goToSlide(index);
-      startAutoplay();
-    });
-  });
 
   // Pause on hover
-  track.addEventListener("mouseenter", () => { isPaused = true; });
-  track.addEventListener("mouseleave", () => { isPaused = false; });
+  const wrapper = track.parentElement!;
+  wrapper.addEventListener("mouseenter", () => {
+    track.style.animationPlayState = "paused";
+  });
+  wrapper.addEventListener("mouseleave", () => {
+    track.style.animationPlayState = "running";
+  });
 
-  // Touch/swipe support
-  let touchStartX = 0;
-
-  track.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-    isPaused = true;
+  // Pause on touch
+  track.addEventListener("touchstart", () => {
+    track.style.animationPlayState = "paused";
+  }, { passive: true });
+  track.addEventListener("touchend", () => {
+    track.style.animationPlayState = "running";
   }, { passive: true });
 
-  track.addEventListener("touchend", (e) => {
-    const touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-    }
-    isPaused = false;
-    startAutoplay();
-  }, { passive: true });
-
-  // Initialize — start at real index 0 (domIndex 1), so the last testimonial peeks on the left
-  scrollToDomIndex(1, false);
-  startAutoplay();
+  // Initialize
+  updateAnimationWidth();
+  positionTrack();
 
   // Recalculate on resize
+  let resizeTimer: ReturnType<typeof setTimeout>;
   window.addEventListener("resize", () => {
-    scrollToDomIndex(currentIndex + 1, false);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateAnimationWidth();
+      positionTrack();
+    }, 200);
   });
 </script>
 
 <style>
   .testimonial-track {
+    --set-width: 3400px;
+    --start-offset: -3400px;
+    --duration: 30s;
     will-change: transform;
-    /* Offset so part of the previous card peeks on the left */
-    padding-left: max(1.5rem, calc((100vw - 85vw) / 2 - 3rem));
+    animation: testimonial-scroll var(--duration) linear infinite;
+    padding-left: 2rem;
+  }
+
+  @keyframes testimonial-scroll {
+    0% {
+      transform: translateX(var(--start-offset));
+    }
+    100% {
+      transform: translateX(calc(var(--start-offset) - var(--set-width)));
+    }
+  }
+
+  /* GPU acceleration for buttery smooth scrolling */
+  .testimonial-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .testimonial-wrapper {
+    -webkit-overflow-scrolling: touch;
   }
 
   @media (min-width: 768px) {
     .testimonial-track {
-      padding-left: max(3rem, calc((100vw - 560px) / 2 - 4rem));
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .testimonial-track {
-      padding-left: max(3rem, calc((100vw - 640px) / 2 - 5rem));
+      padding-left: 3rem;
     }
   }
 </style>
