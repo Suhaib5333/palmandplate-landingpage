@@ -27,30 +27,38 @@
 - Favicon: Gold logo icon PNG (`public/favicon.png`)
 
 ## App URLs (Environment-Based)
-Centralized in `src/config.ts`, controlled by `VITE_APP_ENV` env variable:
-| Env | Base URL | Login | Register |
-|-----|----------|-------|----------|
-| dev | http://localhost:5173 | /login | /register |
-| uat | https://uat.palmandplate.com | /login | /register |
-| prod | https://app.palmandplate.com | /login | /register |
+Centralized in `src/config.ts`, using `PUBLIC_MEMBER_APP_URL` and `PUBLIC_API_URL` env vars:
+| Env | Member App URL | API URL |
+|-----|---------------|---------|
+| dev | http://localhost:5173 | http://localhost:3000 |
+| prod | https://app.palmandplate.com | https://api.palmandplate.com |
 
-- `.env` sets `VITE_APP_ENV=dev` (local development)
-- `.env.production` sets `VITE_APP_ENV=prod` (production builds)
+- `.env` sets dev URLs (local development)
+- `.env.production` sets prod URLs (production builds)
 - All components import `{ urls }` from `@/config` — no hardcoded app URLs in components
+- `api.baseUrl` also exported from config for future API integration
+
+## CI/CD
+- **GitHub Actions:** `.github/workflows/deploy.yml` — deploys on push to `main`
+- **Deployment:** SSH into VPS via `appleboy/ssh-action@v1`, clone/pull, `npm ci && npm run build`, serve via PM2 on port 4321
+- **GitHub Secrets required:** `VPS_HOST`, `VPS_SSH_KEY`
+- **VPS path:** `/var/www/palmandplate-landing`
+- **PM2 process name:** `palmandplate-landing`
 
 ## Page Structure (index.astro)
 `Navbar → Hero → About → HowItWorks → Volumes → Gallery → Testimonials → Pricing → Waitlist → Footer`
 
 ## Key Files
-- `src/config.ts` — Centralized app URLs (login, register) per environment
+- `src/config.ts` — Centralized app URLs (login, register) and API base URL per environment
 - `tailwind.config.mjs` — Brand colors, custom fonts, display text sizes
 - `src/styles/global.css` — @font-face, scroll animations, grain texture, component classes
 - `src/layouts/Layout.astro` — Base HTML with IntersectionObserver, favicon, meta tags
 - `src/pages/index.astro` — Main page composition
 - `src/components/` — All section components
 - `public/fonts/` — TAN Ashford, DIN Next family, Amrys Bold
-- `.env` — Dev environment config (`VITE_APP_ENV=dev`)
-- `.env.production` — Prod environment config (`VITE_APP_ENV=prod`)
+- `.env` — Dev environment config (`PUBLIC_MEMBER_APP_URL`, `PUBLIC_API_URL`)
+- `.env.production` — Prod environment config
+- `.github/workflows/deploy.yml` — GitHub Actions CI/CD pipeline
 
 ## Image Organization
 All event images live in `src/assets/images/events/`:
