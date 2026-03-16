@@ -33,9 +33,10 @@ jobs:
 
             # Write production env vars
             cat > .env <<EOF
-            PUBLIC_MEMBER_APP_URL=https://app.palmandplate.com
-            PUBLIC_API_URL=https://api.palmandplate.com
+            PUBLIC_MEMBER_APP_URL=http://${{ secrets.VPS_HOST }}:5173
+            PUBLIC_API_URL=http://${{ secrets.VPS_HOST }}:3000
             EOF
+            sed -i 's/^[[:space:]]*//' .env
 
             # Install and build
             npm ci
