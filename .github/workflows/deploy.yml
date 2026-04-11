@@ -43,10 +43,8 @@ jobs:
             npm run build
 
             # Serve with PM2 (static file server on port 4321)
-            if pm2 describe palmandplate-landing > /dev/null 2>&1; then
-              pm2 restart palmandplate-landing
-            else
-              npx pm2 serve dist 4321 --name palmandplate-landing --spa
-            fi
+            # Delete old process to pick up new config (removed --spa for multi-page support)
+            pm2 delete palmandplate-landing 2>/dev/null || true
+            npx pm2 serve dist 4321 --name palmandplate-landing
 
             pm2 save
