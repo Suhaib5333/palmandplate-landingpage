@@ -8,12 +8,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Test VPS connectivity
+        run: |
+          nc -zv -w 10 ${{ secrets.VPS_HOST }} 22 || echo "Port 22 unreachable"
+
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
           key: ${{ secrets.VPS_SSH_KEY }}
+          timeout: 120s
+          command_timeout: 10m
           script: |
             set -e
 
