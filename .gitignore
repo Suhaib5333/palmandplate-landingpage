@@ -31,3 +31,7 @@ docs/
 
 # Claude config
 CLAUDE.md
+.claude/
+
+# Bun
+bun.lock
