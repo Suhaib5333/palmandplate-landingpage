@@ -42,9 +42,11 @@ jobs:
             npm ci
             npm run build
 
-            # Serve with PM2 (static file server on port 4321)
-            # Delete old process to pick up new config (removed --spa for multi-page support)
+            # Install serve for proper static file serving
+            npm i -g serve 2>/dev/null || true
+
+            # Delete old PM2 process and start fresh
             pm2 delete palmandplate-landing 2>/dev/null || true
-            npx pm2 serve dist 4321 --name palmandplate-landing
+            pm2 start "serve dist -l 4321 -n" --name palmandplate-landing
 
             pm2 save
