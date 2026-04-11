@@ -178,6 +178,11 @@
 .stagger-children.visible > *:nth-child(4) { transition-delay: 360ms; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(5) { transition-delay: 480ms; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(6) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(7) { transition-delay: 720ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(8) { transition-delay: 840ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(9) { transition-delay: 960ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(10) { transition-delay: 1080ms; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(n+11) { transition-delay: 1200ms; opacity: 1; transform: translateY(0); }
 
 /* Smooth image hover zoom */
 .img-zoom {

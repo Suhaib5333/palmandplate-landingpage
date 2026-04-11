@@ -113,14 +113,23 @@ import logoIconGold from "@/assets/images/brand/logo-icon-gold.png";
       </div>
 
       <!-- CTA -->
-      <div class="reveal">
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
           href={urls.register}
           class="inline-flex items-center justify-center px-12 py-5 bg-clay text-cream font-body font-bold tracking-wider uppercase text-sm hover:bg-saffron hover:text-charcoal transition-all duration-500 group"
         >
-          Join the Waitlist
+          Join as a Member
           <svg class="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a
+          href={urls.host}
+          class="inline-flex items-center justify-center px-12 py-5 border-2 border-clay/40 text-clay font-body font-bold tracking-wider uppercase text-sm hover:bg-clay hover:text-cream transition-all duration-500 group"
+        >
+          Become a Host
+          <svg class="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
           </svg>
         </a>
       </div>

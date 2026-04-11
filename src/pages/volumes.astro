@@ -1,0 +1,447 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
+import { Image } from "astro:assets";
+
+// Vol 01 — 10 photos
+const vol01Images = Object.values(import.meta.glob("@/assets/images/events/vol01/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol02Images = Object.values(import.meta.glob("@/assets/images/events/vol02/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol03Images = Object.values(import.meta.glob("@/assets/images/events/vol03/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol04Images = Object.values(import.meta.glob("@/assets/images/events/vol04/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol05Images = Object.values(import.meta.glob("@/assets/images/events/vol05/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol06Images = Object.values(import.meta.glob("@/assets/images/events/vol06/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol07Images = Object.values(import.meta.glob("@/assets/images/events/vol07/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol08Images = Object.values(import.meta.glob("@/assets/images/events/vol08/*.jpg", { eager: true })).map((m: any) => m.default);
+const vol09Images = Object.values(import.meta.glob("@/assets/images/events/vol09/*.jpg", { eager: true })).map((m: any) => m.default);
+
+const volumes = [
+  {
+    num: "01", name: "Loy Krathong", restaurant: "Monsoon",
+    subtitle: "Bahrain's Most Iconic Asian Spot",
+    date: "November 4th, 2025",
+    courses: 11, seats: 12, price: 12,
+    photos: vol01Images,
+  },
+  {
+    num: "02", name: "Italian Night", restaurant: "Osteria Papa",
+    subtitle: "An Evening Under the Lights",
+    date: "November 20th, 2025",
+    courses: 7, seats: 14, price: 12,
+    photos: vol02Images,
+  },
+  {
+    num: "03", name: "Opening Night", restaurant: "Nori Club by Sumosan",
+    subtitle: "Japanese Fine Dining",
+    date: "",
+    courses: 0, seats: 0, price: 0,
+    photos: vol03Images,
+  },
+  {
+    num: "04", name: "Layali Muharraq", restaurant: "LaBurccia",
+    subtitle: "A Night in Old Muharraq",
+    date: "",
+    courses: 0, seats: 0, price: 0,
+    photos: vol04Images,
+  },
+  {
+    num: "05", name: "Holiday Feast", restaurant: "Diana's",
+    subtitle: "A Christmas Celebration",
+    date: "December 22nd, 2025",
+    courses: 8, seats: 20, price: 15,
+    photos: vol05Images,
+  },
+  {
+    num: "06", name: "Crazy Pizza", restaurant: "Crazy Pizza",
+    subtitle: "A Night of Italian Flavour",
+    date: "",
+    courses: 0, seats: 0, price: 0,
+    photos: vol06Images,
+  },
+  {
+    num: "07", name: "BBQ on the Terrace", restaurant: "Higher Grounds",
+    subtitle: "Rooftop Grills & Good Vibes",
+    date: "",
+    courses: 0, seats: 0, price: 0,
+    photos: vol07Images,
+  },
+  {
+    num: "08", name: "Valentines Preview", restaurant: "Ramenara",
+    subtitle: "A Valentine's Night Out",
+    date: "",
+    courses: 0, seats: 0, price: 0,
+    photos: vol08Images,
+  },
+  {
+    num: "09", name: "Fatto", restaurant: "Fatto",
+    subtitle: "Italian Craftsmanship",
+    date: "",
+    courses: 0, seats: 0, price: 0,
+    photos: vol09Images,
+  },
+  {
+    num: "10", name: "Volume 10", restaurant: "TBA",
+    subtitle: "",
+    date: "",
+    courses: 0, seats: 0, price: 0,
+    photos: [],
+  },
+];
+---
+
+<Layout title="Volumes — Palm & Plate">
+  <Navbar />
+
+  <main class="bg-charcoal min-h-screen pt-28 md:pt-36">
+    <!-- Page Header -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-24">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="brand-divider"></div>
+          <p class="text-saffron font-body font-medium tracking-[0.25em] uppercase text-xs">Our Volumes</p>
+          <div class="brand-divider"></div>
+        </div>
+        <h1 class="text-display font-heading text-cream mb-6">
+          Every Volume,<br />A New <span class="text-saffron">Chapter</span>
+        </h1>
+        <p class="section-subheading text-cream/50 max-w-2xl">
+          Each volume is a unique dining experience at a different restaurant, with a custom tasting menu
+          crafted just for our members. Explore the journey so far.
+        </p>
+      </div>
+    </div>
+
+    <!-- Season 1 -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 mb-6">
+      <div class="reveal flex items-center gap-4">
+        <h2 class="font-heading text-2xl md:text-3xl text-cream">Season 1</h2>
+        <div class="flex-1 h-[1px] bg-cream/10"></div>
+        <span class="text-cream/30 font-body text-sm tracking-wider">10 Volumes</span>
+      </div>
+    </div>
+
+    <!-- Season 1 Volume Grid -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28">
+      <div class="stagger-children grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
+        {volumes.map((vol) => {
+          const hasPhotos = vol.photos.length > 0;
+          return (
+            <button
+              class:list={[
+                "volume-card group relative rounded-2xl overflow-hidden transition-all duration-500 text-left",
+                hasPhotos
+                  ? "cursor-pointer hover:shadow-2xl hover:shadow-saffron/10 hover:-translate-y-1"
+                  : "cursor-default border border-cream/10",
+              ]}
+              data-volume={hasPhotos ? vol.num : undefined}
+              disabled={!hasPhotos}
+            >
+              <div class="aspect-[3/4] relative overflow-hidden">
+                {hasPhotos ? (
+                  <Image
+                    src={vol.photos[0]}
+                    alt={`${vol.name} at ${vol.restaurant}`}
+                    width={400}
+                    height={533}
+                    quality={70}
+                    format="webp"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full bg-charcoal-light flex flex-col items-center justify-center gap-2">
+                    <span class="text-cream/15 font-heading text-5xl">{vol.num}</span>
+                    <span class="text-cream/20 font-body text-[10px] tracking-widest uppercase">Coming Soon</span>
+                  </div>
+                )}
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"></div>
+
+                <div class="absolute top-2 left-2 md:top-3 md:left-3">
+                  <span class:list={[
+                    "font-body font-bold text-[8px] md:text-[10px] tracking-widest uppercase px-2 py-0.5 md:px-3 md:py-1 rounded-full",
+                    hasPhotos ? "bg-saffron text-charcoal" : "bg-cream/10 text-cream/30",
+                  ]}>
+                    Vol. {vol.num}
+                  </span>
+                </div>
+
+                <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                  <h3 class="font-heading text-sm md:text-lg text-cream leading-tight mb-0.5 md:mb-1 line-clamp-2">
+                    {hasPhotos ? vol.name : "Coming Soon"}
+                  </h3>
+                  {hasPhotos && (
+                    <p class="text-cream/40 font-body text-[10px] md:text-xs truncate">{vol.restaurant}</p>
+                  )}
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Season 2 — Coming Soon -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28">
+      <div class="reveal">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="font-heading text-2xl md:text-3xl text-cream">Season 2</h2>
+          <div class="flex-1 h-[1px] bg-cream/10"></div>
+        </div>
+        <div class="border border-cream/10 rounded-2xl p-8 md:p-16 text-center">
+          <p class="text-saffron font-body font-medium tracking-[0.3em] uppercase text-xs mb-4">Coming Soon</p>
+          <h3 class="font-heading text-3xl md:text-4xl text-cream mb-4">New Chapters Await</h3>
+          <p class="text-cream/40 font-body font-light max-w-md mx-auto mb-8">
+            Season 2 is in the works. Join the waitlist to be the first to know when new volumes drop.
+          </p>
+          <a href="/#waitlist" class="btn-primary">Get Notified</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to home -->
+    <div class="text-center pb-20 reveal">
+      <a href="/" class="inline-flex items-center gap-2 text-cream/30 hover:text-saffron font-body text-sm tracking-wider uppercase transition-colors duration-300">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<!-- Gallery Popup Overlay -->
+<div id="gallery-popup" class="fixed inset-0 z-[100] opacity-0 pointer-events-none transition-opacity duration-300" style="background-color: rgba(27, 27, 27, 0.97); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);">
+  <!-- Close -->
+  <button id="gallery-close" class="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-cream/10 hover:bg-cream/15 active:bg-cream/20 transition-colors">
+    <svg class="w-5 h-5 md:w-6 md:h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Volume title — stacked on mobile, inline on desktop -->
+  <div id="gallery-header" class="absolute top-3 left-4 right-16 md:top-6 md:left-6 md:right-20 z-20 flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+    <span id="gallery-badge" class="bg-saffron text-charcoal font-body font-bold text-[10px] md:text-xs tracking-widest uppercase px-3 py-1 md:px-4 md:py-1.5 rounded-full self-start shrink-0"></span>
+    <span id="gallery-title" class="text-cream font-heading text-sm md:text-xl leading-snug line-clamp-2 md:line-clamp-1"></span>
+  </div>
+
+  <!-- Gallery content area -->
+  <div id="gallery-content" class="absolute inset-0 top-[4.5rem] md:top-20 overflow-y-auto px-3 md:px-12 pb-8 md:pb-12 overscroll-contain">
+    <div id="gallery-grid" class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 pt-2 md:pt-8"></div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[110] bg-charcoal/98 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center">
+  <button id="lightbox-close" class="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-cream/10 hover:bg-cream/15 active:bg-cream/20 transition-colors">
+    <svg class="w-5 h-5 md:w-6 md:h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <div class="absolute top-5 left-4 md:top-7 md:left-6 z-10">
+    <span id="lightbox-counter" class="text-cream/40 font-body text-xs md:text-sm tracking-wider"></span>
+  </div>
+  <button id="lightbox-prev" class="absolute left-2 md:left-8 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-cream/10 hover:bg-cream/15 active:bg-cream/20 transition-colors">
+    <svg class="w-5 h-5 md:w-6 md:h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <button id="lightbox-next" class="absolute right-2 md:right-8 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-cream/10 hover:bg-cream/15 active:bg-cream/20 transition-colors">
+    <svg class="w-5 h-5 md:w-6 md:h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+  <div id="lightbox-img-container" class="w-full h-full flex items-center justify-center p-4 pt-16 md:p-24">
+    <div class="relative inline-flex">
+      <img id="lightbox-img" class="max-w-full max-h-[calc(100vh-8rem)] md:max-h-[calc(100vh-12rem)] object-contain rounded-lg shadow-2xl transition-opacity duration-300" src="" alt="" />
+      <a id="lightbox-download" href="" download class="absolute bottom-3 right-3 w-11 h-11 flex items-center justify-center rounded-lg bg-charcoal/80 hover:bg-saffron active:bg-saffron-light transition-colors" title="Download photo">
+        <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Volume photo data as JSON for JS -->
+<script define:vars={{ volumeData: volumes.map(v => ({ num: v.num, name: v.name, restaurant: v.restaurant, photos: v.photos.map((p: any) => p.src) })) }}>
+  // Store volume data globally
+  window.__volumeData = volumeData;
+</script>
+
+<script>
+  const popup = document.getElementById("gallery-popup")!;
+  const popupClose = document.getElementById("gallery-close")!;
+  const popupBadge = document.getElementById("gallery-badge")!;
+  const popupTitle = document.getElementById("gallery-title")!;
+  const popupGrid = document.getElementById("gallery-grid")!;
+  const popupContent = document.getElementById("gallery-content")!;
+
+  const lightbox = document.getElementById("lightbox")!;
+  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
+  const lightboxClose = document.getElementById("lightbox-close")!;
+  const lightboxPrev = document.getElementById("lightbox-prev")!;
+  const lightboxNext = document.getElementById("lightbox-next")!;
+  const lightboxCounter = document.getElementById("lightbox-counter")!;
+  const lightboxDownload = document.getElementById("lightbox-download") as HTMLAnchorElement;
+
+  const data: Array<{ num: string; name: string; restaurant: string; photos: string[] }> = (window as any).__volumeData || [];
+  let currentPhotos: string[] = [];
+  let currentIdx = 0;
+
+  // ─── Gallery Popup ───
+  function openGallery(volNum: string) {
+    const vol = data.find((v) => v.num === volNum);
+    if (!vol || !vol.photos.length) return;
+
+    popupBadge.textContent = `Vol. ${vol.num}`;
+    popupTitle.textContent = `${vol.name} — ${vol.restaurant}`;
+    currentPhotos = vol.photos;
+
+    // Build grid
+    popupGrid.innerHTML = "";
+    let activeActions: HTMLElement | null = null;
+
+    vol.photos.forEach((src, idx) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "photo-item relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer";
+
+      wrapper.innerHTML = `
+        <img src="${src}" alt="${vol.name} photo ${idx + 1}" class="w-full h-full object-cover" loading="lazy" />
+        <div class="photo-actions absolute top-0 right-0 flex hidden">
+          <button class="gallery-expand-btn w-11 h-11 flex items-center justify-center bg-charcoal/90 hover:bg-saffron transition-colors" title="View full size">
+            <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+            </svg>
+          </button>
+          <a href="${src}" download class="w-11 h-11 flex items-center justify-center bg-charcoal/90 hover:bg-saffron transition-colors" title="Download" onclick="event.stopPropagation()">
+            <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </a>
+        </div>
+      `;
+
+      const actions = wrapper.querySelector(".photo-actions") as HTMLElement;
+
+      // Click photo → toggle actions (show on this one, hide others)
+      wrapper.addEventListener("click", (e) => {
+        // If actions are already showing and user clicks the photo area (not a button), open lightbox
+        if (!actions.classList.contains("hidden") && e.target === wrapper.querySelector("img")) {
+          openLightbox(idx);
+          return;
+        }
+        // Hide any previously active actions
+        if (activeActions && activeActions !== actions) {
+          activeActions.classList.add("hidden");
+        }
+        actions.classList.toggle("hidden");
+        activeActions = actions.classList.contains("hidden") ? null : actions;
+      });
+
+      wrapper.querySelector(".gallery-expand-btn")!.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openLightbox(idx);
+      });
+
+      popupGrid.appendChild(wrapper);
+    });
+
+    // Click outside any photo hides active actions
+    popupContent.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(".photo-item") && activeActions) {
+        activeActions.classList.add("hidden");
+        activeActions = null;
+      }
+    });
+
+    popupContent.scrollTop = 0;
+    popup.classList.remove("opacity-0", "pointer-events-none");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeGallery() {
+    popup.classList.add("opacity-0", "pointer-events-none");
+    document.body.style.overflow = "";
+  }
+
+  popupClose.addEventListener("click", closeGallery);
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) closeGallery();
+  });
+
+  // Volume card clicks
+  document.querySelectorAll<HTMLElement>(".volume-card[data-volume]").forEach((card) => {
+    card.addEventListener("click", () => {
+      const vol = card.dataset.volume;
+      if (vol) openGallery(vol);
+    });
+  });
+
+  // ─── Lightbox ───
+  function openLightbox(idx: number) {
+    currentIdx = idx;
+    showPhoto();
+    lightbox.classList.remove("opacity-0", "pointer-events-none");
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add("opacity-0", "pointer-events-none");
+  }
+
+  function showPhoto() {
+    currentIdx = ((currentIdx % currentPhotos.length) + currentPhotos.length) % currentPhotos.length;
+    const src = currentPhotos[currentIdx];
+    lightboxImg.style.opacity = "0";
+    setTimeout(() => {
+      lightboxImg.src = src;
+      lightboxImg.alt = `Photo ${currentIdx + 1}`;
+      lightboxImg.style.opacity = "1";
+    }, 150);
+    lightboxCounter.textContent = `${currentIdx + 1} / ${currentPhotos.length}`;
+    lightboxDownload.href = src;
+  }
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightboxPrev.addEventListener("click", () => { currentIdx--; showPhoto(); });
+  lightboxNext.addEventListener("click", () => { currentIdx++; showPhoto(); });
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || (e.target as HTMLElement).id === "lightbox-img-container") closeLightbox();
+  });
+
+  // Keyboard
+  window.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("pointer-events-none")) {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") { currentIdx--; showPhoto(); }
+      if (e.key === "ArrowRight") { currentIdx++; showPhoto(); }
+      return;
+    }
+    if (!popup.classList.contains("pointer-events-none")) {
+      if (e.key === "Escape") closeGallery();
+    }
+  });
+
+  // ─── Touch swipe for lightbox ───
+  let touchStartX = 0;
+  let touchStartY = 0;
+  const lightboxContainer = document.getElementById("lightbox-img-container")!;
+
+  lightboxContainer.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  lightboxContainer.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    // Only swipe if horizontal movement > 50px and more horizontal than vertical
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx > 0) { currentIdx--; showPhoto(); }
+      else { currentIdx++; showPhoto(); }
+    }
+  }, { passive: true });
+</script>

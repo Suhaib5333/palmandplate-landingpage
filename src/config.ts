@@ -7,6 +7,7 @@ const apiUrl = (import.meta.env.PUBLIC_API_URL as string) || "https://api.palman
 export const urls = {
   login: `${memberAppUrl}/login`,
   register: `${memberAppUrl}/register`,
+  host: `${memberAppUrl}/host`,
 };
 
 export const api = {
