@@ -1,0 +1,58 @@
+name: Deploy Landing Dev
+
+# On push to `uat`, deploy the landing page to the VPS at dev.palmandplate.com
+# (serves through Traefik → 127.0.0.1:4322, started under PM2 as
+# `palmandplate-landing-dev`). Prod landing stays on Cloudflare Pages.
+
+on:
+  push:
+    branches: [uat]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test VPS connectivity
+        run: |
+          nc -zv -w 10 ${{ secrets.VPS_HOST }} 22 || echo "Port 22 unreachable"
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: root
+          key: ${{ secrets.VPS_SSH_KEY }}
+          timeout: 120s
+          command_timeout: 10m
+          script: |
+            set -e
+
+            REPO_DIR="/var/www/palmandplate-landing-dev"
+            REPO_URL="https://github.com/Suhaib5333/palmandplate-landingpage.git"
+
+            if [ ! -d "$REPO_DIR" ]; then
+              git clone "$REPO_URL" "$REPO_DIR"
+            fi
+            cd "$REPO_DIR"
+            git fetch origin uat
+            git checkout uat 2>/dev/null || git checkout -b uat origin/uat
+            git reset --hard origin/uat
+
+            # Point dev landing at dev app/api (build-time Astro env)
+            cat > .env <<ENVEOF
+            PUBLIC_MEMBER_APP_URL=https://app.dev.palmandplate.com
+            PUBLIC_API_URL=https://api.dev.palmandplate.com
+            ENVEOF
+
+            npm ci
+            npm run build
+
+            # Ensure serve is present globally (used by PM2 to host the static dist)
+            npm i -g serve 2>/dev/null || true
+
+            pm2 delete palmandplate-landing-dev 2>/dev/null || true
+            pm2 start "serve dist -l 4322 -n" --name palmandplate-landing-dev
+            pm2 save
+
+            echo "Landing dev deployed on port 4322 (dev.palmandplate.com)"
