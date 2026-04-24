@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import img1 from "@/assets/images/events/vol01-laughing.jpg";
+import img2 from "@/assets/images/events/vol02/vol02-table.jpg";
+import img3 from "@/assets/images/events/vol07/vol07-scene.jpg";
+---
+
+<section class="relative overflow-hidden bg-cream-light">
+  <!-- Three-image strip with brush-font overlay -->
+  <div class="relative">
+    <div class="grid grid-cols-3 h-[280px] md:h-[420px] lg:h-[480px] gap-[2px]">
+      <div class="relative overflow-hidden">
+        <Image
+          src={img1}
+          alt="Members laughing at a Palm & Plate dinner"
+          width={800}
+          height={600}
+          quality={75}
+          format="webp"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div class="relative overflow-hidden">
+        <Image
+          src={img2}
+          alt="A long table set for a dinner"
+          width={800}
+          height={600}
+          quality={75}
+          format="webp"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div class="relative overflow-hidden">
+        <Image
+          src={img3}
+          alt="Rooftop courtyard supper scene"
+          width={800}
+          height={600}
+          quality={75}
+          format="webp"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Darkening overlay -->
+    <div class="absolute inset-0 bg-charcoal/55 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-charcoal/20 via-transparent to-charcoal/40 pointer-events-none"></div>
+
+    <!-- Brush-font overlay text -->
+    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
+      <div class="reveal">
+        <p class="text-saffron font-body font-medium tracking-[0.4em] uppercase text-xs md:text-sm mb-3 md:mb-4">Coming Soon</p>
+        <h2
+          class="font-brush text-cream text-6xl md:text-8xl lg:text-9xl leading-[0.95] drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
+          style="font-family: 'Caveat Brush', 'Brush Script MT', cursive;"
+        >
+          Upcoming Suppers
+        </h2>
+        <p class="text-cream/80 font-body font-light text-sm md:text-base mt-4 md:mt-6 max-w-xl mx-auto">
+          The next chapter is being written. Secure your seat before it's gone.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

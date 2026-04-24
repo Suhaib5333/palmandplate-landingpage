@@ -84,18 +84,22 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-clay text-cream font-body font-medium tracking-wider uppercase text-sm
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-full bg-clay text-cream font-body font-medium tracking-wider uppercase text-sm
       hover:bg-saffron hover:text-charcoal transition-all duration-500;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 border border-cream/40 text-cream font-body font-medium tracking-wider uppercase text-sm
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-full border border-cream/40 text-cream font-body font-medium tracking-wider uppercase text-sm
       hover:bg-cream hover:text-charcoal transition-all duration-500;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center px-8 py-4 border-2 border-clay text-clay font-body font-medium tracking-wider uppercase text-sm
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-clay text-clay font-body font-medium tracking-wider uppercase text-sm
       hover:bg-clay hover:text-cream transition-all duration-500;
+  }
+
+  .font-brush {
+    font-family: "Caveat Brush", "Brush Script MT", cursive;
   }
 
   /* Grain texture overlay */

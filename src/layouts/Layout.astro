@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title,
-  description = "Palm & Plate — Bahrain's first food club. Exclusive dining experiences, curated culinary events, and a passionate community of food lovers.",
+  description = "Palm & Plate, Bahrain's first food club. Exclusive dining experiences, curated culinary events, and a passionate community of food lovers.",
 } = Astro.props;
 ---
 
@@ -36,6 +36,11 @@ const {
     <!-- Preload critical fonts -->
     <link rel="preload" href="/fonts/TAN - ASHFORD.otf" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="/fonts/DINNextW1G-Regular.otf" as="font" type="font/otf" crossorigin />
+
+    <!-- Brush font for editorial accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" />
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />

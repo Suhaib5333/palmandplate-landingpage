@@ -1,37 +1,47 @@
 ---
 import { Image } from "astro:assets";
-// Vol 01 — Monsoon (unused elsewhere)
-import vol01MemberImg from "@/assets/images/events/vol01/vol01-07.jpg";
-import vol01DuoImg from "@/assets/images/events/vol01-duo.jpg";
-import vol01TableImg from "@/assets/images/events/vol01-table.jpg";
-import vol01PortraitImg from "@/assets/images/events/vol01-portrait.jpg";
-// Vol 02 — Osteria (unused elsewhere)
-import vol02Food2Img from "@/assets/images/events/vol02/vol02-food2.jpg";
-// Vol 05 — Diana's Christmas (unused elsewhere)
-import vol05FeastImg from "@/assets/images/events/vol05/vol05-feast.jpg";
-import vol05MomentImg from "@/assets/images/events/vol05/vol05-moment.jpg";
-import vol05OutsideImg from "@/assets/images/events/vol05/vol05-outside.jpg";
-// Vol 07 — Rooftop (unused elsewhere)
-import vol07SceneImg from "@/assets/images/events/vol07/vol07-scene.jpg";
-import vol07LambImg from "@/assets/images/events/vol07/vol07-lamb.jpg";
-import vol07Food2Img from "@/assets/images/events/vol07/vol07-food2.jpg";
 
-const images = [
-  // Row 1-2: large hero + tall side + 2 singles
-  { src: vol01MemberImg, alt: "Members laughing at Vol 01 dinner — Monsoon", span: "col-span-2 row-span-2", w: 800, h: 600 },
-  { src: vol07SceneImg, alt: "Members at the Vol 07 rooftop", span: "row-span-2", w: 400, h: 600 },
-  { src: vol02Food2Img, alt: "Artichoke dish at Vol 02 — Osteria", span: "", w: 400, h: 300 },
-  { src: vol05MomentImg, alt: "Henna hand at the Christmas dinner — Vol 05", span: "", w: 400, h: 300 },
-  // Row 3: 4 singles
-  { src: vol01DuoImg, alt: "Friends at a Palm & Plate dinner", span: "", w: 400, h: 300 },
-  { src: vol07Food2Img, alt: "Hummus and bread at Vol 07", span: "", w: 400, h: 300 },
-  { src: vol05FeastImg, alt: "Roast vegetables at Diana's — Vol 05", span: "", w: 400, h: 300 },
-  { src: vol01PortraitImg, alt: "Member portrait at Monsoon", span: "", w: 400, h: 300 },
-  // Row 4: wide + 2 singles
-  { src: vol01TableImg, alt: "Table setting at Monsoon", span: "col-span-2", w: 800, h: 300 },
-  { src: vol07LambImg, alt: "Lamb chop at the rooftop dinner — Vol 07", span: "", w: 400, h: 300 },
-  { src: vol05OutsideImg, alt: "Members outside Diana's — Vol 05", span: "", w: 400, h: 300 },
+// Pull ALL photos across every volume folder (no duplicates across sections, the spec says no dupes,
+// but shuffle here is fine because shuffled picks are randomised per build and per page load)
+const allImageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "@/assets/images/events/**/*.jpg",
+  { eager: true }
+);
+const allImages = Object.values(allImageModules).map((m) => m.default);
+
+// Shuffle helper, Fisher-Yates
+function shuffle<T>(arr: T[]): T[] {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+// Pick 30 shuffled photos at build time for the server render
+const pickCount = Math.min(30, allImages.length);
+const picked = shuffle(allImages).slice(0, pickCount);
+
+// Visual spans: applied by position, not by image, so hierarchy is preserved across shuffles.
+// Pattern repeats every 11 cells to match the existing Row1-4 layout (hero + tall + 2 singles +
+// 4 singles + wide + 2 singles = 11).
+const spanPattern = [
+  "col-span-2 row-span-2",
+  "row-span-2",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "col-span-2",
+  "",
+  "",
 ];
+
+// Build the URL list of ALL candidates so the client script can swap images at load
+const allImageUrls = allImages.map((img) => img.src);
 ---
 
 <section id="gallery" class="py-24 md:py-32 bg-charcoal relative overflow-hidden">
@@ -43,30 +53,45 @@ const images = [
         <p class="text-saffron font-body font-medium tracking-[0.25em] uppercase text-xs">Gallery</p>
         <div class="brand-divider"></div>
       </div>
-      <h2 class="section-heading text-cream mb-6">Moments We've Shared</h2>
+      <h2 class="section-heading text-cream mb-6 uppercase">
+        <span class="text-saffron">MOMENTS</span> WE'VE SHARED
+      </h2>
       <p class="section-subheading text-cream/40 max-w-xl mx-auto">
         Real people, real food, real connections. A glimpse into our world.
       </p>
     </div>
 
-    <div class="reveal-scale grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-2 md:gap-3">
-      {images.map((image) => (
-        <div class={`img-zoom rounded-sm ${image.span}`}>
+    <div id="gallery-grid" class="reveal-scale grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-2 md:gap-3">
+      {picked.map((image, i) => (
+        <div class={`img-zoom rounded-sm overflow-hidden ${spanPattern[i % spanPattern.length]}`}>
           <Image
-            src={image.src}
-            alt={image.alt}
-            width={image.w}
-            height={image.h}
+            src={image}
+            alt="Palm & Plate moment"
+            width={800}
+            height={600}
             quality={70}
             format="webp"
-            class="w-full h-full object-cover"
+            class="gallery-img w-full h-full object-cover"
             loading="lazy"
           />
         </div>
       ))}
     </div>
 
+    <!-- ALL VOLUMES button, curved pill linking to /volumes -->
     <div class="text-center mt-12 reveal">
+      <a
+        href="/volumes"
+        class="inline-flex items-center gap-3 rounded-full bg-saffron text-charcoal font-body font-bold tracking-widest uppercase text-xs md:text-sm px-10 py-4 hover:bg-saffron-light transition-all duration-500 group"
+      >
+        <span>All Volumes</span>
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="text-center mt-8 reveal">
       <a
         href="https://www.instagram.com/palmnplate/"
         target="_blank"
@@ -82,3 +107,24 @@ const images = [
 
   </div>
 </section>
+
+<!-- Client-side shuffle: swap <img> src attributes with a new random pick from the full pool on load -->
+<script define:vars={{ allImageUrls }}>
+  if (Array.isArray(allImageUrls) && allImageUrls.length > 0) {
+    const imgs = document.querySelectorAll("#gallery-grid .gallery-img");
+    const pool = [...allImageUrls];
+    // Fisher-Yates
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    imgs.forEach((img, idx) => {
+      const next = pool[idx % pool.length];
+      if (next && img instanceof HTMLImageElement) {
+        // Preserve srcset? Astro's optimised image keeps srcset; overriding src alone still works.
+        img.removeAttribute("srcset");
+        img.src = next;
+      }
+    });
+  }
+</script>

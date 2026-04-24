@@ -35,3 +35,12 @@ CLAUDE.md
 
 # Bun
 bun.lock
+
+# client feedback assets (docx + extracted media + screenshots)
+.docx-extract/
+.playwright-mcp/
+*.docx
+mobile-*.png
+desktop-*.png
+r2-*.png
+mobile-full.png

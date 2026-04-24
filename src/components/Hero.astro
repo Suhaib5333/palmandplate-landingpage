@@ -4,7 +4,7 @@ import heroImg from "@/assets/images/events/vol01-group.jpg";
 ---
 
 <section id="hero" class="relative h-screen h-[100svh] flex items-center overflow-hidden">
-  <!-- Background image — optimized by Astro -->
+  <!-- Background image, optimized by Astro -->
   <div class="absolute inset-0">
     <Image
       src={heroImg}
@@ -32,9 +32,9 @@ import heroImg from "@/assets/images/events/vol01-group.jpg";
         </p>
       </div>
 
-      <h1 class="hero-fade hero-delay-1 text-display font-heading text-cream mb-6">
-        Where Every Meal<br />
-        Tells a <span class="text-saffron">Story</span>
+      <h1 class="hero-fade hero-delay-1 text-display font-heading text-cream mb-6 uppercase">
+        WHERE EVERY MEAL<br />
+        TELLS A <span class="text-saffron">STORY</span>
       </h1>
 
       <p class="hero-fade hero-delay-2 text-base md:text-lg text-cream/70 font-body font-light max-w-xl mb-8 leading-relaxed">
@@ -46,9 +46,19 @@ import heroImg from "@/assets/images/events/vol01-group.jpg";
         <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
         <a href="#about" class="btn-secondary">Discover More</a>
       </div>
+
+      <!-- Mobile: scroll arrow sits below the CTAs in normal flow -->
+      <a href="#about" class="md:hidden hero-fade hero-delay-3 mt-10 flex justify-center">
+        <span class="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center hover:border-saffron/40 transition-colors duration-300">
+          <svg class="w-4 h-4 text-cream/50 scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      </a>
     </div>
 
-    <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group hero-fade hero-delay-3">
+    <!-- Desktop: absolute-centered scroll indicator at bottom -->
+    <a href="#about" class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 group hero-fade hero-delay-3">
       <div class="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center group-hover:border-saffron/40 transition-colors duration-300">
         <svg class="w-4 h-4 text-cream/50 group-hover:text-saffron transition-colors duration-300 scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -61,16 +71,22 @@ import heroImg from "@/assets/images/events/vol01-group.jpg";
 <!-- Marquee strip -->
 <div class="bg-clay py-3 overflow-hidden">
   <div class="animate-marquee whitespace-nowrap flex">
-    {Array(10).fill(null).map(() => (
+    {Array(6).fill(null).map(() => (
       <span class="mx-8 text-cream/80 font-body text-sm tracking-widest uppercase flex items-center gap-8">
-        <span>Exclusive Events</span>
-        <span class="text-saffron text-lg">✦</span>
-        <span>Curated Menus</span>
-        <span class="text-saffron text-lg">✦</span>
-        <span>Community</span>
-        <span class="text-saffron text-lg">✦</span>
-        <span>Bahrain</span>
-        <span class="text-saffron text-lg">✦</span>
+        <span>One Table</span>
+        <svg class="w-4 h-4 text-saffron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>
+        <span>Shared Stories</span>
+        <svg class="w-4 h-4 text-saffron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>
+        <span>Real Connections</span>
+        <svg class="w-4 h-4 text-saffron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>
+        <span>Invite Only</span>
+        <svg class="w-4 h-4 text-saffron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>
+        <span>Pop Up Dinners</span>
+        <svg class="w-4 h-4 text-saffron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>
+        <span>Tasting Menus</span>
+        <svg class="w-4 h-4 text-saffron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>
+        <span>Communal Dining</span>
+        <svg class="w-4 h-4 text-saffron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>
       </span>
     ))}
   </div>

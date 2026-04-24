@@ -1,53 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import { urls } from "@/config";
-import groupImg from "@/assets/images/events/vol01-group.jpg";
-import food2Img from "@/assets/images/events/vol05/vol05-soup.jpg";
-import momentImg from "@/assets/images/events/vol01-moment.jpg";
 import logoIconGold from "@/assets/images/brand/logo-icon-gold.png";
 ---
 
 <section id="waitlist" class="relative overflow-hidden bg-cream-light">
-
-  <!-- Top: Full-width photo mosaic strip -->
-  <div class="grid grid-cols-3 h-[180px] md:h-[260px] gap-[2px]">
-    <div class="img-zoom overflow-hidden">
-      <Image
-        src={groupImg}
-        alt="Palm & Plate members at dinner"
-        width={640}
-        height={280}
-        quality={70}
-        format="webp"
-        class="w-full h-full object-cover"
-        loading="lazy"
-      />
-    </div>
-    <div class="img-zoom overflow-hidden">
-      <Image
-        src={food2Img}
-        alt="Beautifully plated dish"
-        width={640}
-        height={280}
-        quality={70}
-        format="webp"
-        class="w-full h-full object-cover"
-        loading="lazy"
-      />
-    </div>
-    <div class="img-zoom overflow-hidden">
-      <Image
-        src={momentImg}
-        alt="Members connecting over food"
-        width={640}
-        height={280}
-        quality={70}
-        format="webp"
-        class="w-full h-full object-cover"
-        loading="lazy"
-      />
-    </div>
-  </div>
 
   <!-- Main content area -->
   <div class="relative px-6 md:px-12 lg:px-24 py-20 md:py-28">
@@ -69,19 +26,18 @@ import logoIconGold from "@/assets/images/brand/logo-icon-gold.png";
       <!-- Badge -->
       <div class="reveal flex items-center justify-center gap-3 mb-8">
         <div class="w-12 h-[1px] bg-clay/40"></div>
-        <p class="text-clay font-body font-medium tracking-[0.3em] uppercase text-xs">Limited Spots</p>
+        <p class="text-clay font-body font-medium tracking-[0.3em] uppercase text-xs">Invite Only</p>
         <div class="w-12 h-[1px] bg-clay/40"></div>
       </div>
 
       <!-- Heading -->
-      <h2 class="reveal font-heading text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6" style="line-height: 1.3 !important;">
-        Ready to Pull Up<br />a Chair?
+      <h2 class="reveal font-heading text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6 uppercase" style="line-height: 1.3 !important;">
+        READY TO PULL UP<br />A <span class="text-saffron">CHAIR?</span>
       </h2>
 
       <!-- Description -->
       <p class="reveal font-body font-light text-charcoal/50 text-lg leading-relaxed max-w-xl mx-auto mb-14">
-        We keep our community intimate — spots are limited. Join the waitlist
-        and we'll reach out when there's a seat at the table for you.
+        A growing community of people brought together by memorable dining experiences. Join us.
       </p>
 
       <!-- Benefits -->
@@ -112,20 +68,20 @@ import logoIconGold from "@/assets/images/brand/logo-icon-gold.png";
         </div>
       </div>
 
-      <!-- CTA -->
+      <!-- CTAs, unified curved pills, 'Join the Waitlist' primary -->
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
           href={urls.register}
-          class="inline-flex items-center justify-center px-12 py-5 bg-clay text-cream font-body font-bold tracking-wider uppercase text-sm hover:bg-saffron hover:text-charcoal transition-all duration-500 group"
+          class="inline-flex items-center justify-center rounded-full px-12 py-5 bg-clay text-cream font-body font-bold tracking-wider uppercase text-sm hover:bg-saffron hover:text-charcoal transition-all duration-500 group"
         >
-          Join as a Member
+          Join the Waitlist
           <svg class="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
         <a
           href={urls.host}
-          class="inline-flex items-center justify-center px-12 py-5 border-2 border-clay/40 text-clay font-body font-bold tracking-wider uppercase text-sm hover:bg-clay hover:text-cream transition-all duration-500 group"
+          class="inline-flex items-center justify-center rounded-full px-12 py-5 border-2 border-clay/40 text-clay font-body font-bold tracking-wider uppercase text-sm hover:bg-clay hover:text-cream transition-all duration-500 group"
         >
           Become a Host
           <svg class="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -2,6 +2,10 @@
 import { Image } from "astro:assets";
 import vol02LongtableImg from "@/assets/images/events/vol02/vol02-longtable.jpg";
 import vol02PizzaImg from "@/assets/images/events/vol02/vol02-pizza.jpg";
+// Background photos for the three pillar cards
+import curatedBg from "@/assets/images/events/vol05/vol05-food1.jpg";
+import intimateBg from "@/assets/images/events/vol02/vol02-longtable.jpg";
+import discoverBg from "@/assets/images/events/vol07/vol07-scene.jpg";
 ---
 
 <section id="about" class="section-padding bg-cream-light relative overflow-hidden">
@@ -16,20 +20,33 @@ import vol02PizzaImg from "@/assets/images/events/vol02/vol02-pizza.jpg";
           <p class="text-clay font-body font-medium tracking-[0.25em] uppercase text-xs">Our Story</p>
         </div>
 
-        <h2 class="section-heading text-charcoal mb-8">
-          For Arabs, Palms Are a Symbol of
-          <span class="text-clay">Home, Growth</span> &
-          <span class="text-olive">Hospitality</span>
+        <h2 class="font-heading font-bold text-charcoal mb-6 uppercase text-3xl md:text-4xl lg:text-5xl tracking-tight" style="line-height: 1.3 !important;">
+          TWO <span class="text-saffron">HUNGRY</span> MINDS,<br />
+          ONE TABLE
         </h2>
 
-        <p class="section-subheading text-charcoal/60 mb-6">
-          Just like our people. Palm & Plate was born from a simple belief — that the best meals aren't
-          just about what's on the plate, but who's around the table.
+        <p class="font-body text-charcoal/80 text-lg md:text-xl font-medium leading-relaxed mb-10">
+          Welcome to Palm & Plate, a food club founded by Nasser & Yusf.
         </p>
 
-        <p class="section-subheading text-charcoal/60 mb-8">
-          We are Bahrain's first food club. A community of curious palates who come together
-          for intimate, curated dining experiences at the island's most remarkable restaurants.
+        <p class="section-subheading text-charcoal/70 mb-8 leading-[1.9]">
+          Nasser built his name through honest food reviews, both in Bahrain and across his travels around the world. He is also the co-founder of Aura, a concept that blends global street flavors with Bahraini culture through a unique drive-in dining experience.
+        </p>
+
+        <p class="section-subheading text-charcoal/70 mb-8 leading-[1.9]">
+          Yusf is the founder of PinkAlien, Bahrain's first food tour operator, where food, travel, and storytelling come together. He is also a travel content creator who has explored over 40 countries, and is still hungry for more.
+        </p>
+
+        <p class="section-subheading text-charcoal/60 mb-8 leading-[1.9]">
+          Palm & Plate was born from a deeper need: to create a space where people connect beyond the surface.
+        </p>
+
+        <p class="section-subheading text-charcoal/60 mb-8 leading-[1.9]">
+          In a world where it's easy to meet but harder to truly connect, we believe the dining table remains one of the last places where conversations flow, stories are shared, and moments feel real away from the noise.
+        </p>
+
+        <p class="section-subheading text-charcoal/80 font-medium mb-10 leading-[1.9]">
+          So no, this isn't just about food.
         </p>
 
         <div class="brand-divider"></div>
@@ -68,45 +85,84 @@ import vol02PizzaImg from "@/assets/images/events/vol02/vol02-pizza.jpg";
       </div>
     </div>
 
-    <!-- Bottom: Three pillars -->
+    <!-- Bottom: Three pillars, dark photo-bg cards -->
     <div class="stagger-children grid md:grid-cols-3 gap-8 lg:gap-10">
-      <div class="text-center group bg-cream rounded-2xl border border-charcoal/5 p-8 lg:p-10 hover:shadow-lg hover:border-clay/20 transition-all duration-500">
-        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-xl border border-clay/20 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
-          <svg class="w-7 h-7 text-clay group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-          </svg>
+      {/* Card 1: Curated Experiences */}
+      <div class="relative group overflow-hidden rounded-2xl min-h-[340px] flex flex-col justify-end p-8 lg:p-10">
+        <Image
+          src={curatedBg}
+          alt=""
+          width={800}
+          height={600}
+          quality={70}
+          format="webp"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-charcoal/75 group-hover:bg-charcoal/70 transition-colors duration-500"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-xl border border-cream/30 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
+            <svg class="w-7 h-7 text-cream group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl md:text-2xl mb-3 text-cream uppercase tracking-wide">CURATED EXPERIENCES</h3>
+          <p class="font-body font-light text-cream/70 leading-relaxed text-sm md:text-base">
+            Every event is hand-picked. We partner with Bahrain's finest restaurants to create exclusive tasting menus you won't find anywhere else.
+          </p>
         </div>
-        <h3 class="font-heading text-xl mb-3 text-charcoal">Curated Experiences</h3>
-        <p class="font-body font-light text-charcoal/50 leading-relaxed">
-          Every event is hand-picked. We partner with Bahrain's finest restaurants to create
-          exclusive tasting menus you won't find anywhere else.
-        </p>
       </div>
 
-      <div class="text-center group bg-cream rounded-2xl border border-charcoal/5 p-8 lg:p-10 hover:shadow-lg hover:border-clay/20 transition-all duration-500">
-        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-xl border border-clay/20 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
-          <svg class="w-7 h-7 text-clay group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
+      {/* Card 2: Intimate Community */}
+      <div class="relative group overflow-hidden rounded-2xl min-h-[340px] flex flex-col justify-end p-8 lg:p-10">
+        <Image
+          src={intimateBg}
+          alt=""
+          width={800}
+          height={600}
+          quality={70}
+          format="webp"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-charcoal/75 group-hover:bg-charcoal/70 transition-colors duration-500"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-xl border border-cream/30 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
+            <svg class="w-7 h-7 text-cream group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl md:text-2xl mb-3 text-cream uppercase tracking-wide">INTIMATE COMMUNITY</h3>
+          <p class="font-body font-light text-cream/70 leading-relaxed text-sm md:text-base">
+            Small tables, real connections. Our events are limited to 12 seats because the best conversations happen when everyone has a voice.
+          </p>
         </div>
-        <h3 class="font-heading text-xl mb-3 text-charcoal">Intimate Community</h3>
-        <p class="font-body font-light text-charcoal/50 leading-relaxed">
-          Small tables, real connections. Our events are limited to 12 seats because the best
-          conversations happen when everyone has a voice.
-        </p>
       </div>
 
-      <div class="text-center group bg-cream rounded-2xl border border-charcoal/5 p-8 lg:p-10 hover:shadow-lg hover:border-clay/20 transition-all duration-500">
-        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-xl border border-clay/20 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
-          <svg class="w-7 h-7 text-clay group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
+      {/* Card 3: Discover Bahrain */}
+      <div class="relative group overflow-hidden rounded-2xl min-h-[340px] flex flex-col justify-end p-8 lg:p-10">
+        <Image
+          src={discoverBg}
+          alt=""
+          width={800}
+          height={600}
+          quality={70}
+          format="webp"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-charcoal/75 group-hover:bg-charcoal/70 transition-colors duration-500"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-xl border border-cream/30 group-hover:bg-clay group-hover:border-clay transition-all duration-500">
+            <svg class="w-7 h-7 text-cream group-hover:text-cream transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl md:text-2xl mb-3 text-cream uppercase tracking-wide">DISCOVER BAHRAIN</h3>
+          <p class="font-body font-light text-cream/70 leading-relaxed text-sm md:text-base">
+            From hidden gems to iconic spots, each volume takes you somewhere new. We're rewriting the food story of our island, one plate at a time.
+          </p>
         </div>
-        <h3 class="font-heading text-xl mb-3 text-charcoal">Discover Bahrain</h3>
-        <p class="font-body font-light text-charcoal/50 leading-relaxed">
-          From hidden gems to iconic spots — each volume takes you somewhere new. We're
-          rewriting the food story of our island, one plate at a time.
-        </p>
       </div>
     </div>
 

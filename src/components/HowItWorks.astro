@@ -1,36 +1,41 @@
 ---
 import { Image } from "astro:assets";
-import logoIconGold from "@/assets/images/brand/logo-icon-gold.png";
+import bgImg from "@/assets/images/events/vol05/vol05-table.jpg";
 
 const steps = [
   {
     number: "01",
-    title: "Join the Waitlist",
+    title: "JOIN THE WAITLIST",
     description: "Apply to become a member. Tell us about your love for food and what excites you about dining in Bahrain.",
   },
   {
     number: "02",
-    title: "Get Accepted",
+    title: "GET ACCEPTED",
     description: "Our team reviews applications to keep the community intimate and like-minded. You'll hear from us soon.",
   },
   {
     number: "03",
-    title: "Experience the Table",
-    description: "Browse upcoming volumes, reserve your spot, and show up hungry. We handle the rest — from venue to menu.",
+    title: "EXPERIENCE THE TABLE",
+    description: "Browse upcoming volumes, reserve your spot, and show up hungry. We handle the rest, from venue to menu.",
   },
 ];
 ---
 
-<section class="py-24 md:py-32 bg-charcoal relative overflow-hidden">
-  <!-- Subtle background logo -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+  <!-- Shared background photo for the three steps -->
   <Image
-    src={logoIconGold}
+    src={bgImg}
     alt=""
-    width={600}
-    height={600}
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] opacity-[0.03]"
+    width={1920}
+    height={1080}
+    quality={70}
+    format="webp"
+    class="absolute inset-0 w-full h-full object-cover"
     loading="lazy"
   />
+  <!-- Heavy overlay for readability -->
+  <div class="absolute inset-0 bg-charcoal/85"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/75 to-charcoal"></div>
 
   <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
     <!-- Header -->
@@ -41,26 +46,21 @@ const steps = [
         <div class="brand-divider"></div>
       </div>
 
-      <h2 class="section-heading text-cream">
-        Three Steps to<br />Your Next Great Meal
+      <h2 class="section-heading text-cream uppercase">
+        THREE STEPS TO YOUR<br /><span class="text-saffron">SEAT</span> AT THE TABLE
       </h2>
     </div>
 
-    <!-- Steps -->
-    <div class="stagger-children grid md:grid-cols-3 gap-8 lg:gap-16">
-      {steps.map((step, i) => (
-        <div class="relative text-center md:text-left">
-          {/* Connector line on desktop */}
-          {i < 2 && (
-            <div class="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-gradient-to-r from-saffron/40 to-transparent"></div>
-          )}
-
-          <div class="relative z-10">
-            <span class="text-6xl md:text-7xl font-heading text-saffron/20 leading-none">
+    <!-- Steps: numbers and text share the same vertical axis per column -->
+    <div class="stagger-children grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 relative">
+      {steps.map((step) => (
+        <div class="relative text-center flex flex-col items-center">
+          <div class="relative z-10 flex flex-col items-center w-full">
+            <span class="block text-6xl md:text-7xl font-heading text-saffron/30 leading-none mb-4">
               {step.number}
             </span>
-            <h3 class="font-heading text-2xl text-cream mt-4 mb-4">{step.title}</h3>
-            <p class="font-body font-light text-cream/50 leading-relaxed max-w-sm mx-auto md:mx-0">
+            <h3 class="font-heading text-xl md:text-2xl text-cream mb-4 uppercase tracking-wide">{step.title}</h3>
+            <p class="font-body font-light text-cream/60 leading-relaxed max-w-xs">
               {step.description}
             </p>
           </div>

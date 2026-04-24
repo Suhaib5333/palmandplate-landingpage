@@ -1,12 +1,12 @@
 ---
 import { urls } from "@/config";
-// Membership — 4 tiers (season-based)
+// Membership: 4 tiers (season-based)
 const tiers = [
   {
     name: "The Hungry",
     price: "Free",
     period: "",
-    description: "You're on the waitlist. Your seat is coming — hang tight.",
+    description: "You're on the waitlist. Your seat is coming, hang tight.",
     features: [
       "Join the waitlist",
       "Follow upcoming volumes",
@@ -19,7 +19,7 @@ const tiers = [
     name: "Taster",
     price: "Free",
     period: "",
-    description: "You've been to a volume. Welcome to the table — you're one of us now.",
+    description: "You've been to a volume. Welcome to the table, you're one of us now.",
     features: [
       "Access to select public events",
       "Monthly food recommendations",
@@ -76,8 +76,8 @@ const tiers = [
         <p class="text-saffron font-body font-medium tracking-[0.25em] uppercase text-xs">Membership</p>
         <div class="w-16 h-0.5 bg-saffron"></div>
       </div>
-      <h2 class="section-heading text-cream mb-6">
-        Find Your Seat<br />at the Table
+      <h2 class="section-heading text-cream mb-6 uppercase">
+        FIND YOUR <span class="text-saffron">SEAT</span><br />AT THE TABLE
       </h2>
       <p class="section-subheading text-cream/50 max-w-2xl mx-auto">
         Simple, transparent pricing. Choose the membership that fits how you like to dine.
@@ -144,7 +144,7 @@ const tiers = [
                 tier.featured ? "bg-charcoal/10" : "bg-cream/10"
               }`}></div>
 
-              {/* Features — grows to fill space */}
+              {/* Features: grows to fill space */}
               <ul class="space-y-4 mb-10 flex-1">
                 {tier.features.map((feature) => (
                   <li class="flex items-start gap-3">
@@ -162,10 +162,10 @@ const tiers = [
                 ))}
               </ul>
 
-              {/* CTA — always pinned to bottom */}
+              {/* CTA: always pinned to bottom */}
               <a
                 href={urls.register}
-                class={`block w-full text-center px-8 py-4 rounded-xl font-body font-medium tracking-wider uppercase text-sm transition-all duration-500 ${
+                class={`block w-full text-center px-8 py-4 rounded-full font-body font-medium tracking-wider uppercase text-sm transition-all duration-500 ${
                   tier.featured
                     ? "bg-clay text-cream hover:bg-saffron hover:text-charcoal"
                     : "border-2 border-saffron/40 text-saffron hover:bg-saffron hover:text-charcoal"
