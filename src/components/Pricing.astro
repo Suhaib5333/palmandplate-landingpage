@@ -1,5 +1,6 @@
 ---
-import { urls } from "@/config";
+import { urls, api } from "@/config";
+const apiBaseUrl = api.baseUrl;
 // Membership: 4 tiers (season-based)
 const tiers = [
   {
@@ -85,8 +86,28 @@ const tiers = [
       </p>
     </div>
 
-    <!-- Tiers -->
-    <div class="stagger-children grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch">
+    <!-- Coming Soon placeholder (default visible; hidden when admin enables memberships) -->
+    <div id="memberships-coming-soon" class="reveal max-w-2xl mx-auto text-center px-4">
+      <div class="relative overflow-hidden rounded-2xl border border-saffron/20 bg-cream/[0.04] p-10 md:p-16">
+        <div class="absolute -top-16 -right-16 w-48 h-48 bg-saffron/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-clay/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative">
+          <p class="text-saffron font-body font-medium tracking-[0.4em] uppercase text-xs mb-6">Stay Tuned</p>
+          <h3 class="font-heading text-cream text-3xl md:text-4xl lg:text-5xl uppercase mb-6" style="line-height: 1.3 !important;">
+            MEMBERSHIPS<br /><span class="text-saffron">COMING SOON</span>
+          </h3>
+          <p class="font-body font-light text-cream/60 text-base md:text-lg leading-relaxed max-w-md mx-auto mb-10">
+            We're crafting something special. Join the waitlist to be the first to know when memberships open.
+          </p>
+          <a href="#waitlist" class="btn-primary">
+            Join the Waitlist
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tiers (hidden by default; shown when admin enables memberships) -->
+    <div id="memberships-tiers" class="hidden stagger-children grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch">
       {tiers.map((tier) => (
         <div class={`relative group ${tier.featured ? "md:-mt-4 md:mb-4" : ""}`}>
           {/* Featured badge */}
@@ -179,8 +200,8 @@ const tiers = [
       ))}
     </div>
 
-    <!-- Bottom note -->
-    <div class="reveal text-center mt-12">
+    <!-- Bottom note (hidden by default; shown when admin enables memberships) -->
+    <div id="memberships-note" class="hidden reveal text-center mt-12">
       <p class="text-cream/30 font-body text-sm">
         Paid memberships are per season via BenefitPay or card. Free members pay per event.
         <br class="hidden md:block" />
@@ -189,3 +210,43 @@ const tiers = [
     </div>
   </div>
 </section>
+
+<script define:vars={{ apiBaseUrl }}>
+  const CACHE_KEY = "pp-memberships-enabled";
+  const TTL_MS = 5 * 60 * 1000;
+
+  function applyState(enabled) {
+    const comingSoon = document.getElementById("memberships-coming-soon");
+    const tiers = document.getElementById("memberships-tiers");
+    const note = document.getElementById("memberships-note");
+    if (!comingSoon || !tiers || !note) return;
+    comingSoon.classList.toggle("hidden", enabled);
+    tiers.classList.toggle("hidden", !enabled);
+    note.classList.toggle("hidden", !enabled);
+  }
+
+  // Synchronously honour cached value to suppress flash on repeat visits.
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (raw) {
+      const cached = JSON.parse(raw);
+      if (cached && typeof cached.enabled === "boolean" && Date.now() - cached.t < TTL_MS) {
+        applyState(cached.enabled);
+      }
+    }
+  } catch {}
+
+  // Always re-fetch in the background so admin toggles propagate within minutes.
+  fetch(apiBaseUrl + "/settings/public", { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status))))
+    .then((data) => {
+      const enabled = data && data.membershipsEnabled === "true";
+      applyState(enabled);
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ enabled, t: Date.now() }));
+      } catch {}
+    })
+    .catch(() => {
+      // Network or CORS error: keep current (cached or default) state.
+    });
+</script>
