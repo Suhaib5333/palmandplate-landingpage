@@ -15,8 +15,8 @@ const steps = [
   },
   {
     number: "03",
-    title: "EXPERIENCE THE TABLE",
-    description: "Browse upcoming volumes, reserve your spot, and show up hungry. We handle the rest, from venue to menu.",
+    title: "CHOOSE AN EVENT",
+    description: "Browse upcoming volumes, reserve your seat, and show up hungry. We handle the rest, from venue to menu.",
   },
 ];
 ---
@@ -52,15 +52,15 @@ const steps = [
     </div>
 
     <!-- Steps: numbers and text share the same vertical axis per column -->
-    <div class="stagger-children grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 relative">
+    <div class="stagger-children grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 relative items-start">
       {steps.map((step) => (
-        <div class="relative text-center flex flex-col items-center">
+        <div class="step-card group relative text-center flex flex-col items-center">
           <div class="relative z-10 flex flex-col items-center w-full">
-            <span class="block text-6xl md:text-7xl font-heading text-saffron/30 leading-none mb-4">
+            <span class="step-number block text-6xl md:text-7xl font-heading text-saffron/30 leading-none mb-4 transition-colors duration-500">
               {step.number}
             </span>
-            <h3 class="font-heading text-xl md:text-2xl text-cream mb-4 uppercase tracking-wide">{step.title}</h3>
-            <p class="font-body font-light text-cream/60 leading-relaxed max-w-xs">
+            <h3 class="font-heading text-xl md:text-2xl text-cream mb-4 uppercase tracking-wide min-h-[2.5rem] md:min-h-[3rem] flex items-center">{step.title}</h3>
+            <p class="font-body font-light text-cream/60 leading-relaxed max-w-xs min-h-[5.5rem]">
               {step.description}
             </p>
           </div>
@@ -69,3 +69,9 @@ const steps = [
     </div>
   </div>
 </section>
+
+<style>
+  .step-card:hover .step-number {
+    color: #D49416; /* deeper saffron */
+  }
+</style>
